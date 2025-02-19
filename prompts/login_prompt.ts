@@ -1,5 +1,5 @@
-import { UserBase } from "../types"
-import { is_in_userbase } from "../userfunctions"
+import { currentUser, UserBase } from "../types"
+import { find_user, is_in_userbase } from "../userfunctions"
 
 export function login_prompt(userbase: UserBase): void {
     console.log(" Login ")
@@ -13,7 +13,7 @@ export function login_prompt(userbase: UserBase): void {
     }
 }
 
-function check_prompt(prompt_string: string): string {
+export function check_prompt(prompt_string: string): string {
     let prompt_type = prompt(prompt_string)
     while (typeof prompt_type !== "string") {
         prompt_type = prompt(prompt_string)
