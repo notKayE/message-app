@@ -1,4 +1,4 @@
-import { check_prompt } from './project-prompts/login_prompts';
+import { check_prompt } from './prompts/login_prompt';
 import { currentUser, User, UserBase } from './types';
 import { find_user, is_in_userbase } from './userfunctions';
 
