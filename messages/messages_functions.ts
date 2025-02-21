@@ -7,20 +7,20 @@ const message_enqueue = (message: Message, queue: Queue<Message | unknown>): voi
 const message_dequeue = (queue: Queue<Message | unknown>): void => dequeue(queue);
 
 // Creates a message from a User.
-function message_create(user: TempUser, body: string,): Message {
+export function message_create(user: TempUser, body: string,): Message {
   return { sender: user.name, body };
 }
 
 // Sends a message to a recipient. Preconditions that the recipient exists
 // TODO: Find recipient and check if exists on top level.
 // TODO: Update type User to match TempUser.
-function message_send(recipient: TempUser, message: Message): void {
+export function message_send(recipient: TempUser, message: Message): void {
   message_enqueue(message, recipient.message_queue)
   console.log(`Message sent to ${recipient.name}.\n`)
 }
 
 // Reads a message then dequeues it.
-function message_read_and_dequeue(user: TempUser): void {
+export function message_read_and_dequeue(user: TempUser): void {
   // If queue is empty, return.
   if (!head(user.message_queue)) return console.log('All messages read.');
 
