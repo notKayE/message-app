@@ -3,8 +3,8 @@ import { Message, TempUser } from './message_types';
 
 // Three renamed queue functions.
 export const message_create_queue = () => empty();
-export const message_enqueue = (message: Message, queue: Queue<Message | unknown>): void => enqueue(message, queue);
-export const message_dequeue = (queue: Queue<Message | unknown>): void => dequeue(queue);
+const message_enqueue = (message: Message, queue: Queue<Message | unknown>): void => enqueue(message, queue);
+const message_dequeue = (queue: Queue<Message | unknown>): void => dequeue(queue);
 
 // Creates a message from a User.
 function message_create(user: TempUser, body: string,): Message {
@@ -31,40 +31,3 @@ function message_read_and_dequeue(user: TempUser): void {
 
   message_dequeue(user.message_queue);
 }
-
-// -----------------------------
-// Tests
-const q = message_create_queue();
-
-const joakim: TempUser = {
-  name: 'Joakim',
-  password: '123',
-  message_queue: message_create_queue(),
-  friends: [],
-}
-
-const ivan: TempUser = {
-  name: 'Ivan',
-  password: '123',
-  message_queue: message_create_queue(),
-  friends: [],
-}
-
-const elis: TempUser = {
-  name: 'Elis',
-  password: '123',
-  message_queue: message_create_queue(),
-  friends: [],
-}
-
-const m1 = message_create(ivan, 'Hej, hur mår du?');
-const m2 = message_create(elis, 'Toppen, ska vi ses på fredag?');
-const m3 = message_create(ivan, 'Klockan 10 blir bra.');
-
-message_send(joakim, m1)
-message_send(joakim, m2)
-message_send(joakim, m3)
-
-message_read_and_dequeue(joakim)
-message_read_and_dequeue(joakim)
-message_read_and_dequeue(joakim)
