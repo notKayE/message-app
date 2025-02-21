@@ -21,7 +21,7 @@ export function remove_friend(username:string, friendname: string, userbase: Use
             if (username === userbase[i].name) {
                 for (let n = 0; n < userbase.length; n++) {
                     if (friendname === userbase[n].name) {
-                        if (userbase[i].friends.includes(friendname)){
+                        if (userbase[i].friends.indexOf(friendname) !== -1){
                             const remove = userbase[i].friends.indexOf(friendname);
                             userbase[i].friends.splice(remove, 1);
                         }
