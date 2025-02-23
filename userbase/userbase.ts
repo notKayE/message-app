@@ -16,10 +16,15 @@ for (let i = 0; i < names.length; i++) {
 
 // Adds friends to users in DB
 for (let i = 0; i < ub.length; i++) {
+  // Random amount of friends and array created with said random amount of friends.
   const random_amount_of_friends = Math.floor(Math.random() * 8); // 0 - 7 friends
   const friends_to_add = Array.from({length: random_amount_of_friends}, () => ub[Math.floor(Math.random() * ub.length)]); // Random friends in array
 
-  friends_to_add.forEach(friend => add_friend(ub[i].name, friend.name, ub));
+  // Add the friends to the users friends list.
+  friends_to_add.forEach(friend => {
+    if (ub[i].friends.includes(friend.name) || ub[i].name === friend.name) return;
+    add_friend(ub[i].name, friend.name, ub);
+  })
 }
 
 console.log(ub)
