@@ -1,4 +1,4 @@
-import { message_create, message_send } from "../messages/messages_functions";
+import { message_create, message_read_and_dequeue, message_send } from "../messages/messages_functions";
 import { currentUser, User, UserBase } from "../types";
 import { add_to_userbase, create_user, create_userbase, find_user, is_in_userbase } from "../userfunctions";
 import { logged_in_prompt } from "./logged_in_prompt";
@@ -15,8 +15,23 @@ add_to_userbase(elis, userbase)
 add_to_userbase(joakim, userbase)
 add_to_userbase(ivan, userbase)
 
+export function choose_message_action(userbase: UserBase, currentUser: currentUser): void {
+    console.log("choose action")
+    console.log("[S] - send message")
+    console.log("[R] - read messag")
+    const action = check_prompt("")
 
-export function send_message_prompt(userbase: UserBase, currentUser: currentUser): void {
+    if (action === "S") {
+        send_message_prompt(userbase, currentUser)
+    } else if (action === "R") {
+        read_message_prompt(userbase, currentUser)
+    } else {
+        console.log("unknown command")
+        choose_message_action(userbase, currentUser)
+    }
+}
+
+function send_message_prompt(userbase: UserBase, currentUser: currentUser): void {
     let recipent = check_prompt("Recipent: ")
 
     while(!is_in_userbase(recipent, userbase)) {
@@ -31,7 +46,7 @@ export function send_message_prompt(userbase: UserBase, currentUser: currentUser
     logged_in_prompt(userbase, currentUser)
 }
 
-export function read_message_prompt(currentUser: currentUser): void {
-    const length = currentuser[0].message_queue[1] - currentuser[0].message_queue[0]
-    console.log(`You have ${length} messages`)
+function read_message_prompt(userbase: UserBase, currentUser: currentUser): void {
+    message_read_and_dequeue(currentUser[0])
+    logged_in_prompt(userbase, currentUser)
 }
