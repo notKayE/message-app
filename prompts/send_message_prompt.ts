@@ -1,7 +1,8 @@
 import { message_create, message_send } from "../messages/messages_functions";
 import { currentUser, User, UserBase } from "../types";
 import { add_to_userbase, create_user, create_userbase, find_user, is_in_userbase } from "../userfunctions";
-import { check_prompt } from "./login_prompt";
+import { logged_in_prompt } from "./logged_in_prompt";
+import { check_prompt, login_prompt } from "./login_prompt";
 
 const userbase: UserBase = create_userbase()
 const currentuser: currentUser = []
@@ -27,7 +28,10 @@ export function send_message_prompt(userbase: UserBase, currentUser: currentUser
     const message = message_create(currentUser[0], body)
     
     message_send(find_user(recipent, userbase)!, message)
+    logged_in_prompt(userbase, currentUser)
 }
 
-send_message_prompt(userbase, [ivan])
-console.log(joakim.message_queue[2])
+export function read_message_prompt(currentUser: currentUser): void {
+    const length = currentuser[0].message_queue[1] - currentuser[0].message_queue[0]
+    console.log(`You have ${length} messages`)
+}
