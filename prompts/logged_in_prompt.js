@@ -7,6 +7,7 @@ function logged_in_prompt(userbase, currentUser) {
     console.log("[X] - sign out");
     var action = (0, login_prompt_1.check_prompt)("");
     if (action === "X") {
+        currentUser.pop();
         (0, login_prompt_1.login_prompt)(userbase, currentUser);
     }
     else {

@@ -7,6 +7,7 @@ export function logged_in_prompt(userbase: UserBase, currentUser: currentUser): 
     console.log("[X] - sign out")
     const action = check_prompt("")
     if (action === "X") {
+        currentUser.pop()
         login_prompt(userbase, currentUser)
     } else {
         console.log("unknown command")

@@ -5,8 +5,9 @@ exports.create_userbase = create_userbase;
 exports.is_in_userbase = is_in_userbase;
 exports.find_user = find_user;
 exports.add_to_userbase = add_to_userbase;
+var messages_functions_1 = require("./messages/messages_functions");
 function create_user(name, password) {
-    return { name: name, password: password, messages: [], friends: [] };
+    return { name: name, password: password, message_queue: (0, messages_functions_1.message_create_queue)(), friends: [] };
 }
 function create_userbase() {
     return [];
