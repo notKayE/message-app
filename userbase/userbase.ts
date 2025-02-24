@@ -28,3 +28,126 @@ for (let i = 0; i < ub.length; i++) {
 }
 
 console.log(ub)
+
+// DB
+const constant_userbase = [
+  {
+    name: 'Joakim',
+    password: '123',
+    message_queue: [ 0, 0, [] ],
+    friends: [ 'Kalle', 'Eva' ]
+  },
+  {
+    name: 'Ivan',
+    password: '123',
+    message_queue: [ 0, 0, [] ],
+    friends: [ 'Elis', 'Per' ]
+  },
+  {
+    name: 'Elis',
+    password: '123',
+    message_queue: [ 0, 0, [] ],
+    friends: [ 'Andreas', 'Hanna' ]
+  },
+  {
+    name: 'Kalle',
+    password: '123',
+    message_queue: [ 0, 0, [] ],
+    friends: [ 'Lina', 'Elis' ]
+  },
+  {
+    name: 'Eva',
+    password: '123',
+    message_queue: [ 0, 0, [] ],
+    friends: [ 'Andreas', 'Nina' ]
+  },
+  {
+    name: 'Nisse',
+    password: '123',
+    message_queue: [ 0, 0, [] ],
+    friends: [ 'Nina' ]
+  },
+  {
+    name: 'Pelle',
+    password: '123',
+    message_queue: [ 0, 0, [] ],
+    friends: [ 'Tristan', 'Froppe', 'Ivan', 'Elis', 'Per', 'Nisse' ]
+  },
+  {
+    name: 'Niklas',
+    password: '123',
+    message_queue: [ 0, 0, [] ],
+    friends: [
+      'Lina',    'Kalle',
+      'Hanna',   'Per',
+      'Andreas', 'Froppe',
+      'Johanna'
+    ]
+  },
+  {
+    name: 'Johanna',
+    password: '123',
+    message_queue: [ 0, 0, [] ],
+    friends: [ 'Stina', 'Joakim', 'Elis', 'Nisse' ]
+  },
+  {
+    name: 'Stina',
+    password: '123',
+    message_queue: [ 0, 0, [] ],
+    friends: [ 'Per', 'Kalle', 'Ivan' ]
+  },
+  {
+    name: 'Jan',
+    password: '123',
+    message_queue: [ 0, 0, [] ],
+    friends: [ 'Lina', 'Ivan', 'Niklas' ]
+  },
+  {
+    name: 'Andreas',
+    password: '123',
+    message_queue: [ 0, 0, [] ],
+    friends: [ 'Eva', 'Johanna', 'Joakim' ]
+  },
+  {
+    name: 'Lina',
+    password: '123',
+    message_queue: [ 0, 0, [] ],
+    friends: [ 'Nisse', 'Andreas', 'Joakim', 'Eva' ]
+  },
+  {
+    name: 'Amanda',
+    password: '123',
+    message_queue: [ 0, 0, [] ],
+    friends: [ 'Eva', 'Stina' ]
+  },
+  {
+    name: 'Per',
+    password: '123',
+    message_queue: [ 0, 0, [] ],
+    friends: [ 'Kalle', 'Nisse', 'Niklas', 'Eva', 'Tristan', 'Ivan' ]
+  },
+  {
+    name: 'Tristan',
+    password: '123',
+    message_queue: [ 0, 0, [] ],
+    friends: [ 'Froppe', 'Amanda', 'Andreas', 'Eva', 'Johanna' ]
+  },
+  {
+    name: 'Froppe',
+    password: '123',
+    message_queue: [ 0, 0, [] ],
+    friends: [ 'Kalle', 'Nina', 'Niklas' ]
+  },
+  {
+    name: 'Nina',
+    password: '123',
+    message_queue: [ 0, 0, [] ],
+    friends: [ 'Andreas', 'Kalle', 'Jan', 'Nisse' ]
+  },
+  {
+    name: 'Hanna',
+    password: '123',
+    message_queue: [ 0, 0, [] ],
+    friends: []
+  }
+];
