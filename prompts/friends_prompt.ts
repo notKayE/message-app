@@ -1,4 +1,4 @@
-import { add_friend, remove_friend } from "../friends_functions";
+import { add_friend, remove_friend } from "../friends/friends_functions";
 import { currentUser, UserBase } from "../types";
 import { logged_in_prompt } from "./logged_in_prompt";
 import { check_prompt } from "./login_prompt";

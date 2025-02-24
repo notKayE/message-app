@@ -1,4 +1,4 @@
-import { add_friend } from "../friends_functions";
+import { add_friend } from "../friends/friends_functions";
 import { add_to_userbase, create_user, create_userbase } from "../userfunctions";
 
 // Users and their names

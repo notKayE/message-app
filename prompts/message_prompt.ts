@@ -18,13 +18,16 @@ add_to_userbase(ivan, userbase)
 export function choose_message_action(userbase: UserBase, currentUser: currentUser): void {
     console.log("choose action")
     console.log("[S] - send message")
-    console.log("[R] - read messag")
+    console.log("[R] - read message")
+    console.log("[B] - go back")
     const action = check_prompt("")
 
     if (action === "S") {
         send_message_prompt(userbase, currentUser)
     } else if (action === "R") {
         read_message_prompt(userbase, currentUser)
+    } else if (action === "B") {
+        logged_in_prompt(userbase, currentUser)
     } else {
         console.log("unknown command")
         choose_message_action(userbase, currentUser)
@@ -43,10 +46,10 @@ function send_message_prompt(userbase: UserBase, currentUser: currentUser): void
     const message = message_create(currentUser[0], body)
     
     message_send(find_user(recipent, userbase)!, message)
-    logged_in_prompt(userbase, currentUser)
+    choose_message_action(userbase, currentUser)
 }
 
 function read_message_prompt(userbase: UserBase, currentUser: currentUser): void {
     message_read_and_dequeue(currentUser[0])
-    logged_in_prompt(userbase, currentUser)
+    choose_message_action(userbase, currentUser)
 }
