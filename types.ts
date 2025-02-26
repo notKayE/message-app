@@ -5,6 +5,8 @@ export type User = {
     password: string
     message_queue: Queue<Message | unknown>
     friends: Array<string>
+    friend_request: Queue<User>
+    message_privacy: boolean // If false, no privacy enabled.
 }
 
 export type UserBase = Array<User>

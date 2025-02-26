@@ -1,8 +1,16 @@
+import { empty } from "./lib/queue_array";
 import { message_create_queue } from "./messages/messages_functions";
 import { User, UserBase } from "./types";
 
 export function create_user(name: string, password: string): User {
-    return { name, password, message_queue: message_create_queue(), friends: [] }
+    return {
+        name,
+        password,
+        message_queue: message_create_queue(),
+        friends: [],
+        friend_request: empty(),
+        message_privacy: false
+    }
 }
 
 export function create_userbase(): UserBase {
