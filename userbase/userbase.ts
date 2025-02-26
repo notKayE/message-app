@@ -1,9 +1,10 @@
 import { add_friend } from "../friends/friends_functions";
+import { User, UserBase } from "../types";
 import { add_to_userbase, create_user, create_userbase } from "../userfunctions";
 
 // Users and their names
-const names = ['Joakim', 'Ivan', 'Elis', 'Kalle', 'Eva', 'Nisse', 'Pelle', 'Niklas', 'Johanna', 'Stina',
-  'Jan', 'Andreas', 'Lina', 'Amanda', 'Per', 'Tristan', 'Froppe', 'Nina', 'Hanna'];
+const names = ['joakim', 'ivan', 'elis', 'kalle', 'eva', 'nisse', 'pelle', 'niklas', 'johanna', 'stina',
+  'jan', 'andreas', 'lina', 'amanda', 'per', 'tristan', 'froppe', 'nina', 'hanna'];
 
 const password = '123';
 const ub = create_userbase()
@@ -17,7 +18,7 @@ for (let i = 0; i < names.length; i++) {
 // Adds friends to users in DB
 for (let i = 0; i < ub.length; i++) {
   // Random amount of friends and array created with said random amount of friends.
-  const random_amount_of_friends = Math.floor(Math.random() * 8); // 0 - 7 friends
+  const random_amount_of_friends = Math.floor(Math.random() * 2 + 2); // 2 - 6 friends
   const friends_to_add = Array.from({length: random_amount_of_friends}, () => ub[Math.floor(Math.random() * ub.length)]); // Random friends in array
 
   // Add the friends to the users friends list.
@@ -27,127 +28,169 @@ for (let i = 0; i < ub.length; i++) {
   })
 }
 
-console.log(ub)
-
-// DB
-const constant_userbase = [
+export const main_userbase: UserBase = [
   {
-    name: 'Joakim',
-    password: '123',
-    message_queue: [ 0, 0, [] ],
-    friends: [ 'Kalle', 'Eva' ]
-  },
-  {
-    name: 'Ivan',
-    password: '123',
-    message_queue: [ 0, 0, [] ],
-    friends: [ 'Elis', 'Per' ]
-  },
-  {
-    name: 'Elis',
-    password: '123',
-    message_queue: [ 0, 0, [] ],
-    friends: [ 'Andreas', 'Hanna' ]
-  },
-  {
-    name: 'Kalle',
-    password: '123',
-    message_queue: [ 0, 0, [] ],
-    friends: [ 'Lina', 'Elis' ]
-  },
-  {
-    name: 'Eva',
-    password: '123',
-    message_queue: [ 0, 0, [] ],
-    friends: [ 'Andreas', 'Nina' ]
-  },
-  {
-    name: 'Nisse',
-    password: '123',
-    message_queue: [ 0, 0, [] ],
-    friends: [ 'Nina' ]
-  },
-  {
-    name: 'Pelle',
-    password: '123',
-    message_queue: [ 0, 0, [] ],
-    friends: [ 'Tristan', 'Froppe', 'Ivan', 'Elis', 'Per', 'Nisse' ]
-  },
-  {
-    name: 'Niklas',
+    name: 'joakim',
     password: '123',
     message_queue: [ 0, 0, [] ],
     friends: [
-      'Lina',    'Kalle',
-      'Hanna',   'Per',
-      'Andreas', 'Froppe',
-      'Johanna'
-    ]
+      'eva',     'stina',
+      'ivan',    'niklas',
+      'johanna', 'andreas',
+      'per',     'tristan'
+    ],
+    friend_request: [ 0, 0, [] ],
+    message_privacy: false
   },
   {
-    name: 'Johanna',
+    name: 'ivan',
     password: '123',
     message_queue: [ 0, 0, [] ],
-    friends: [ 'Stina', 'Joakim', 'Elis', 'Nisse' ]
+    friends: [ 'joakim', 'andreas', 'kalle', 'johanna', 'jan', 'per' ],
+    friend_request: [ 0, 0, [] ],
+    message_privacy: false
   },
   {
-    name: 'Stina',
+    name: 'elis',
     password: '123',
     message_queue: [ 0, 0, [] ],
-    friends: [ 'Per', 'Kalle', 'Ivan' ]
+    friends: [ 'per', 'pelle', 'nisse', 'andreas' ],
+    friend_request: [ 0, 0, [] ],
+    message_privacy: false
   },
   {
-    name: 'Jan',
+    name: 'kalle',
     password: '123',
     message_queue: [ 0, 0, [] ],
-    friends: [ 'Lina', 'Ivan', 'Niklas' ]
+    friends: [ 'ivan', 'nina', 'eva', 'niklas', 'lina' ],
+    friend_request: [ 0, 0, [] ],
+    message_privacy: false
   },
   {
-    name: 'Andreas',
+    name: 'eva',
     password: '123',
     message_queue: [ 0, 0, [] ],
-    friends: [ 'Eva', 'Johanna', 'Joakim' ]
+    friends: [ 'joakim', 'kalle', 'johanna', 'froppe', 'stina', 'amanda' ],
+    friend_request: [ 0, 0, [] ],
+    message_privacy: false
   },
   {
-    name: 'Lina',
+    name: 'nisse',
     password: '123',
     message_queue: [ 0, 0, [] ],
-    friends: [ 'Nisse', 'Andreas', 'Joakim', 'Eva' ]
+    friends: [ 'elis', 'niklas', 'andreas', 'pelle', 'hanna' ],
+    friend_request: [ 0, 0, [] ],
+    message_privacy: false
   },
   {
-    name: 'Amanda',
+    name: 'pelle',
     password: '123',
     message_queue: [ 0, 0, [] ],
-    friends: [ 'Eva', 'Stina' ]
+    friends: [ 'elis', 'tristan', 'nisse', 'andreas', 'nina' ],
+    friend_request: [ 0, 0, [] ],
+    message_privacy: false
   },
   {
-    name: 'Per',
+    name: 'niklas',
     password: '123',
     message_queue: [ 0, 0, [] ],
-    friends: [ 'Kalle', 'Nisse', 'Niklas', 'Eva', 'Tristan', 'Ivan' ]
+    friends: [ 'nisse', 'stina', 'joakim', 'kalle' ],
+    friend_request: [ 0, 0, [] ],
+    message_privacy: false
   },
   {
-    name: 'Tristan',
+    name: 'johanna',
     password: '123',
     message_queue: [ 0, 0, [] ],
-    friends: [ 'Froppe', 'Amanda', 'Andreas', 'Eva', 'Johanna' ]
+    friends: [ 'eva', 'ivan', 'joakim', 'nina' ],
+    friend_request: [ 0, 0, [] ],
+    message_privacy: false
   },
   {
-    name: 'Froppe',
+    name: 'stina',
     password: '123',
     message_queue: [ 0, 0, [] ],
-    friends: [ 'Kalle', 'Nina', 'Niklas' ]
+    friends: [
+      'joakim', 'eva',
+      'niklas', 'nina',
+      'per',    'tristan',
+      'froppe'
+    ],
+    friend_request: [ 0, 0, [] ],
+    message_privacy: false
   },
   {
-    name: 'Nina',
+    name: 'jan',
     password: '123',
     message_queue: [ 0, 0, [] ],
-    friends: [ 'Andreas', 'Kalle', 'Jan', 'Nisse' ]
+    friends: [ 'tristan', 'ivan', 'lina' ],
+    friend_request: [ 0, 0, [] ],
+    message_privacy: false
   },
   {
-    name: 'Hanna',
+    name: 'andreas',
     password: '123',
     message_queue: [ 0, 0, [] ],
-    friends: []
+    friends: [ 'ivan', 'nisse', 'pelle', 'joakim', 'elis' ],
+    friend_request: [ 0, 0, [] ],
+    message_privacy: false
+  },
+  {
+    name: 'lina',
+    password: '123',
+    message_queue: [ 0, 0, [] ],
+    friends: [ 'jan', 'kalle' ],
+    friend_request: [ 0, 0, [] ],
+    message_privacy: false
+  },
+  {
+    name: 'amanda',
+    password: '123',
+    message_queue: [ 0, 0, [] ],
+    friends: [ 'eva', 'hanna' ],
+    friend_request: [ 0, 0, [] ],
+    message_privacy: false
+  },
+  {
+    name: 'per',
+    password: '123',
+    message_queue: [ 0, 0, [] ],
+    friends: [ 'elis', 'stina', 'joakim', 'ivan' ],
+    friend_request: [ 0, 0, [] ],
+    message_privacy: false
+  },
+  {
+    name: 'tristan',
+    password: '123',
+    message_queue: [ 0, 0, [] ],
+    friends: [ 'pelle', 'jan', 'nina', 'joakim', 'stina' ],
+    friend_request: [ 0, 0, [] ],
+    message_privacy: false
+  },
+  {
+    name: 'froppe',
+    password: '123',
+    message_queue: [ 0, 0, [] ],
+    friends: [ 'eva', 'stina' ],
+    friend_request: [ 0, 0, [] ],
+    message_privacy: false
+  },
+  {
+    name: 'nina',
+    password: '123',
+    message_queue: [ 0, 0, [] ],
+    friends: [ 'kalle', 'stina', 'tristan', 'johanna', 'pelle' ],
+    friend_request: [ 0, 0, [] ],
+    message_privacy: false
+  },
+  {
+    name: 'hanna',
+    password: '123',
+    message_queue: [ 0, 0, [] ],
+    friends: [ 'nisse', 'amanda' ],
+    friend_request: [ 0, 0, [] ],
+    message_privacy: false
   }
-];
+]
+
+console.log(main_userbase);
