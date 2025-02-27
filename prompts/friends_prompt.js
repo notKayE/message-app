@@ -11,6 +11,7 @@ function friends_prompts(userbase, currentuser) {
     console.log("[A] - Add Friend");
     console.log("[R] - Remove Friend");
     console.log("[V] - View Friends");
+    console.log("[F] - View Friend-requests");
     console.log("[B] - Back");
     var action = (0, login_prompt_1.check_prompt)("");
     if (action === "A" || action === "a") {
@@ -25,6 +26,10 @@ function friends_prompts(userbase, currentuser) {
     }
     else if (action === "V" || action === "v") {
         console.log(currentuser[0].friends);
+        friends_prompts(userbase, currentuser);
+    }
+    else if (action === "F".toLowerCase()) {
+        (0, friends_functions_1.friend_request_recieved)(currentuser[0]);
         friends_prompts(userbase, currentuser);
     }
     else if (action === "B" || action === "b") {

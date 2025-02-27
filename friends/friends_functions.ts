@@ -1,5 +1,36 @@
-import { UserBase } from "../types";
+import { User, UserBase } from "../types";
 import { is_in_userbase } from "../userfunctions";
+import { dequeue, enqueue, head, Queue } from '../lib/queue_array';
+import { check_prompt } from '../prompts/login_prompt';
+import { friends_prompts } from '../prompts/friends_prompt';
+
+const request_enqueue = (user: User, queue: Queue<User>): void => enqueue(user, queue)
+const request_dequeue = (queue: Queue<User>): void => dequeue(queue)
+
+export function friend_request_send(recipient: User, sender: User): void {
+    request_enqueue(sender, recipient.friend_request)
+}
+
+export function friend_request_recieved(recipient:User): void {
+    const name_of_sender = head(recipient.friend_request).name
+    const name_of_recipient = recipient.name
+    if (!head(recipient.friend_request)) {
+        console.log("You have no new friend requests")
+    } else {
+        console.log(`${name_of_sender} has sent you a friend request!`)
+        console.log("Do you accept?")
+        console.log("[Y] - Yes")
+        console.log("[N] - No")
+        const answer = check_prompt("")
+        if (answer === "Y" ||answer === "y") {
+            recipient.friends.push(name_of_sender)
+            head(recipient.friend_request).friends.push(name_of_recipient)
+        } else if (answer === "N" || answer === "n"){
+            friends_prompts
+        } else {console.log("unknown command")}
+        request_dequeue(recipient.friend_request)
+    }
+}
 
 export function add_friend(username: string, friendname: string, userbase: UserBase): void {
     if (is_in_userbase(friendname, userbase)) {
@@ -7,8 +38,7 @@ export function add_friend(username: string, friendname: string, userbase: UserB
             if (username === userbase[i].name) {
                 for (let n = 0; n < userbase.length; n++) {
                     if (friendname === userbase[n].name) {
-                        userbase[i].friends.push(friendname)
-                        userbase[n].friends.push(username)
+                        friend_request_send(userbase[n], userbase[i])
                     } else {}
                 } 
             }
@@ -34,4 +64,6 @@ export function remove_friend(username:string, friendname: string, userbase: Use
         }
     } else { console.log("user does not exist") }
 }
+
+// Renamed queue-functions
 
