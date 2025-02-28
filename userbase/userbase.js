@@ -192,4 +192,3 @@ exports.main_userbase = [
         message_privacy: false
     }
 ];
-console.log(exports.main_userbase);

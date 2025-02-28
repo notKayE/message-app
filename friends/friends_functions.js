@@ -15,6 +15,9 @@ var request_dequeue = function (queue) { return (0, queue_array_1.dequeue)(queue
 function friend_request_send(recipient, sender) {
     request_enqueue(sender, recipient.friend_request);
 }
+// Recieves friend-request and gives the option to accept or deny it.
+// If accepted, both sender and recipient adds the other as friend
+// If denied, nothing happens
 function friend_request_recieved(recipient) {
     if (!(0, queue_array_1.head)(recipient.friend_request)) {
         console.log("You have no new friend requests");
@@ -40,6 +43,7 @@ function friend_request_recieved(recipient) {
         request_dequeue(recipient.friend_request);
     }
 }
+// Function to add friend.
 function add_friend(username, friendname, userbase) {
     if ((0, userfunctions_1.is_in_userbase)(friendname, userbase)) {
         for (var i = 0; i < userbase.length; i++) {
@@ -57,6 +61,8 @@ function add_friend(username, friendname, userbase) {
         console.log("user does not exist");
     }
 }
+// Function to remove friend. 
+// If friend is removed, the person who is removed has the remover removed as friend as well
 function remove_friend(username, friendname, userbase) {
     if ((0, userfunctions_1.is_in_userbase)(friendname, userbase)) {
         for (var i = 0; i < userbase.length; i++) {
