@@ -41,7 +41,7 @@ function send_message_prompt(userbase, currentUser) {
     }
     var body = (0, login_prompt_1.check_prompt)("Message: ");
     var message = (0, messages_functions_1.message_create)(currentUser[0], body);
-    (0, messages_functions_1.message_send)((0, userfunctions_1.find_user)(recipent, userbase), message);
+    (0, messages_functions_1.message_send)((0, userfunctions_1.find_user)(recipent, userbase), currentUser[0], message);
     choose_message_action(userbase, currentUser);
 }
 function read_message_prompt(userbase, currentUser) {

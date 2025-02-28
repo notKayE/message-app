@@ -1,4 +1,7 @@
+import { closest_relation } from "../friends/closest_relation";
 import { add_friend, friend_request_recieved, remove_friend } from "../friends/friends_functions";
+import { suggested_friends } from "../friends/suggested_friends";
+import { flatten } from "../lib/list";
 import { currentUser, UserBase } from "../types";
 import { logged_in_prompt } from "./logged_in_prompt";
 import { check_prompt } from "./login_prompt";
@@ -12,6 +15,7 @@ export function friends_prompts(userbase: UserBase, currentuser: currentUser): v
     console.log("[R] - Remove Friend")
     console.log("[V] - View Friends")
     console.log("[F] - View Friend-requests")
+    console.log("[C] - Lookup closest relation")
     console.log("[B] - Back")
     const action = check_prompt("")
 
@@ -19,6 +23,7 @@ export function friends_prompts(userbase: UserBase, currentuser: currentUser): v
     // A name is written down - calls the add_friend function
 
     if (action === "A" || action === "a") {
+        console.log(`Suggested friends:${suggested_friends(currentuser[0], userbase)}`)
         const friend_to_add = check_prompt("Friend to add: ")
         add_friend(username, friend_to_add, userbase)
         friends_prompts(userbase, currentuser)  
@@ -27,6 +32,7 @@ export function friends_prompts(userbase: UserBase, currentuser: currentUser): v
     // A name is written down - calls the remove_friend function
 
     } else if (action === "R" || action === "r") {
+        console.log(currentuser[0].friends)
         const friend_to_remove = check_prompt("Friend to remove: ")
         remove_friend(username, friend_to_remove, userbase)
         friends_prompts(userbase, currentuser)
@@ -47,6 +53,11 @@ export function friends_prompts(userbase: UserBase, currentuser: currentUser): v
 
     // Back - action
     // The user is returned to the first prompt-screen
+
+    } else if (action === "C" || action === "c") {
+        const target: string = check_prompt("Target user: ")
+        console.log(closest_relation(userbase, currentuser[0].name, target)?.flat(5).slice(0, -1))
+        friends_prompts(userbase, currentuser)
 
     } else if (action === "B" || action === "b") {
         logged_in_prompt(userbase, currentuser)

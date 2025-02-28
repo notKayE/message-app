@@ -1,16 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.main_userbase = void 0;
+exports.main_userbase = exports.names = void 0;
 var friends_functions_1 = require("../friends/friends_functions");
 var userfunctions_1 = require("../userfunctions");
 // Users and their names
-var names = ['joakim', 'ivan', 'elis', 'kalle', 'eva', 'nisse', 'pelle', 'niklas', 'johanna', 'stina',
+exports.names = ['joakim', 'ivan', 'elis', 'kalle', 'eva', 'nisse', 'pelle', 'niklas', 'johanna', 'stina',
     'jan', 'andreas', 'lina', 'amanda', 'per', 'tristan', 'froppe', 'nina', 'hanna'];
 var password = '123';
 var ub = (0, userfunctions_1.create_userbase)();
 // Adds users to the DB.
-for (var i = 0; i < names.length; i++) {
-    var new_user = (0, userfunctions_1.create_user)(names[i], password);
+for (var i = 0; i < exports.names.length; i++) {
+    var new_user = (0, userfunctions_1.create_user)(exports.names[i], password);
     (0, userfunctions_1.add_to_userbase)(new_user, ub);
 }
 var _loop_1 = function (i) {

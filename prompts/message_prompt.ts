@@ -45,7 +45,7 @@ function send_message_prompt(userbase: UserBase, currentUser: currentUser): void
     const body = check_prompt("Message: ")
     const message = message_create(currentUser[0], body)
     
-    message_send(find_user(recipent, userbase)!, message)
+    message_send(find_user(recipent, userbase)!, currentUser[0], message)
     choose_message_action(userbase, currentUser)
 }
 

@@ -23,17 +23,16 @@ export function suggested_friends(user: User, userbase: UserBase): Array<string>
         }
     }
 
-    suggested_friends_array.splice(5)
     return sort_by_frequency(frequency)
 }
 
-function sort_by_frequency<T>(frequency_array: Array<Pair<T, number>>): Array<T> {
-    const result: Array<T> = []
+function sort_by_frequency(frequency_array: Array<Pair<string, number>>): Array<string> {
+    const result: Array<string> = []
 
     for(let a = 1; a < frequency_array.length; a++) {
         for(let b = a; b > 0; b--) {
             if (tail(frequency_array[b]) > tail(frequency_array[b - 1])) {
-                const temp: Pair<T, number> = frequency_array[b]
+                const temp: Pair<string, number> = frequency_array[b]
                 frequency_array[b] = frequency_array[b - 1]
                 frequency_array[b - 1] = temp
             }
@@ -41,10 +40,9 @@ function sort_by_frequency<T>(frequency_array: Array<Pair<T, number>>): Array<T>
     }
 
     for(let i = 0; i < 5; i++) {
-        result.push(head(frequency_array[i]))
+        result.push(" " + head(frequency_array[i]))
     }
 
+    result.splice(5)
     return result
 }
-
-console.log(suggested_friends(main_userbase[0], main_userbase))

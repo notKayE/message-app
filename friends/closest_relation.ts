@@ -36,5 +36,3 @@ export function closest_relation(userbase: UserBase, user1: string, user2: strin
 
     return map(x => userlist[x], lg_shortest_path(lg, first, second))
 }
-
-console.log(closest_relation(main_userbase, "ivan", "eva"))

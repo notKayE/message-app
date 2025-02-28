@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.closest_relation = closest_relation;
 var graphs_1 = require("../lib/graphs");
 var list_1 = require("../lib/list");
-var userbase_1 = require("../userbase/userbase");
 var shortest_path_1 = require("./shortest_path");
 function userbase_to_userlist(userbase) {
     var result = [];
@@ -29,4 +28,3 @@ function closest_relation(userbase, user1, user2) {
     var second = userlist.indexOf(user2);
     return (0, list_1.map)(function (x) { return userlist[x]; }, (0, shortest_path_1.lg_shortest_path)(lg, first, second));
 }
-console.log(closest_relation(userbase_1.main_userbase, "ivan", "eva"));

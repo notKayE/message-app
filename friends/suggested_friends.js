@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.suggested_friends = suggested_friends;
 var list_1 = require("../lib/list");
-var userbase_1 = require("../userbase/userbase");
 var userfunctions_1 = require("../userfunctions");
 function suggested_friends(user, userbase) {
     var suggested_friends_array = [];
@@ -24,7 +23,6 @@ function suggested_friends(user, userbase) {
             }
         }
     }
-    suggested_friends_array.splice(5);
     return sort_by_frequency(frequency);
 }
 function sort_by_frequency(frequency_array) {
@@ -39,8 +37,8 @@ function sort_by_frequency(frequency_array) {
         }
     }
     for (var i = 0; i < 5; i++) {
-        result.push((0, list_1.head)(frequency_array[i]));
+        result.push(" " + (0, list_1.head)(frequency_array[i]));
     }
+    result.splice(5);
     return result;
 }
-console.log(suggested_friends(userbase_1.main_userbase[0], userbase_1.main_userbase));

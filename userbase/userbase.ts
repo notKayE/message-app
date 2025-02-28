@@ -3,7 +3,7 @@ import { User, UserBase } from "../types";
 import { add_to_userbase, create_user, create_userbase } from "../userfunctions";
 
 // Users and their names
-const names = ['joakim', 'ivan', 'elis', 'kalle', 'eva', 'nisse', 'pelle', 'niklas', 'johanna', 'stina',
+export const names = ['joakim', 'ivan', 'elis', 'kalle', 'eva', 'nisse', 'pelle', 'niklas', 'johanna', 'stina',
   'jan', 'andreas', 'lina', 'amanda', 'per', 'tristan', 'froppe', 'nina', 'hanna'];
 
 const password = '123';

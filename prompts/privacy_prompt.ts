@@ -1,12 +1,9 @@
-import { User } from "../types";
-import { main_userbase } from "../userbase/userbase";
+import { User, UserBase, currentUser } from "../types";
 import { logged_in_prompt } from "./logged_in_prompt";
 import { check_prompt } from "./login_prompt";
 
-const userbase = main_userbase;
-const temp_current_user = [main_userbase[0]];
-
-function privacy_prompt(user: User): void {
+export function privacy_prompt(userbase: UserBase, currentUser: currentUser): void {
+  const user = currentUser[0]
   const privacy_current_setting = user.message_privacy ? 'ENABLED' : 'DISABLED';
   const privacy_choice = user.message_privacy ? 'Disable' : 'Enable';
 
@@ -18,15 +15,13 @@ function privacy_prompt(user: User): void {
   const user_choice = check_prompt('');
 
   if (user_choice.toLowerCase() === 'b') {
-    logged_in_prompt(userbase, temp_current_user);
+    logged_in_prompt(userbase, currentUser);
   }
   else if (user_choice.toLowerCase() === 'c') {
     user.message_privacy = !user.message_privacy;
-    privacy_prompt(temp_current_user[0])
+    privacy_prompt(userbase, currentUser)
   } else {
     console.log('Wrong command.')
-    privacy_prompt(temp_current_user[0])
+    privacy_prompt(userbase, currentUser)
   }
 }
-
-privacy_prompt(temp_current_user[0]);
