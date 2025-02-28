@@ -4,19 +4,23 @@ import { dequeue, enqueue, head, Queue } from '../lib/queue_array';
 import { check_prompt } from '../prompts/login_prompt';
 import { friends_prompts } from '../prompts/friends_prompt';
 
+// Renamed queue-functions
+
 const request_enqueue = (user: User, queue: Queue<User>): void => enqueue(user, queue)
 const request_dequeue = (queue: Queue<User>): void => dequeue(queue)
+
+// Sends friend-request
 
 export function friend_request_send(recipient: User, sender: User): void {
     request_enqueue(sender, recipient.friend_request)
 }
 
 export function friend_request_recieved(recipient:User): void {
-    const name_of_sender = head(recipient.friend_request).name
-    const name_of_recipient = recipient.name
     if (!head(recipient.friend_request)) {
         console.log("You have no new friend requests")
     } else {
+        const name_of_sender = head(recipient.friend_request).name
+        const name_of_recipient = recipient.name
         console.log(`${name_of_sender} has sent you a friend request!`)
         console.log("Do you accept?")
         console.log("[Y] - Yes")
@@ -64,6 +68,3 @@ export function remove_friend(username:string, friendname: string, userbase: Use
         }
     } else { console.log("user does not exist") }
 }
-
-// Renamed queue-functions
-

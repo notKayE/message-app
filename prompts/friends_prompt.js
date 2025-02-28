@@ -28,7 +28,7 @@ function friends_prompts(userbase, currentuser) {
         console.log(currentuser[0].friends);
         friends_prompts(userbase, currentuser);
     }
-    else if (action === "F".toLowerCase()) {
+    else if (action === "F" || action === "f") {
         (0, friends_functions_1.friend_request_recieved)(currentuser[0]);
         friends_prompts(userbase, currentuser);
     }

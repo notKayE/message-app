@@ -8,18 +8,20 @@ var userfunctions_1 = require("../userfunctions");
 var queue_array_1 = require("../lib/queue_array");
 var login_prompt_1 = require("../prompts/login_prompt");
 var friends_prompt_1 = require("../prompts/friends_prompt");
+// Renamed queue-functions
 var request_enqueue = function (user, queue) { return (0, queue_array_1.enqueue)(user, queue); };
 var request_dequeue = function (queue) { return (0, queue_array_1.dequeue)(queue); };
+// Sends friend-request
 function friend_request_send(recipient, sender) {
     request_enqueue(sender, recipient.friend_request);
 }
 function friend_request_recieved(recipient) {
-    var name_of_sender = (0, queue_array_1.head)(recipient.friend_request).name;
-    var name_of_recipient = recipient.name;
     if (!(0, queue_array_1.head)(recipient.friend_request)) {
         console.log("You have no new friend requests");
     }
     else {
+        var name_of_sender = (0, queue_array_1.head)(recipient.friend_request).name;
+        var name_of_recipient = recipient.name;
         console.log("".concat(name_of_sender, " has sent you a friend request!"));
         console.log("Do you accept?");
         console.log("[Y] - Yes");
@@ -77,4 +79,3 @@ function remove_friend(username, friendname, userbase) {
         console.log("user does not exist");
     }
 }
-// Renamed queue-functions
