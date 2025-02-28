@@ -15,6 +15,10 @@ export function friend_request_send(recipient: User, sender: User): void {
     request_enqueue(sender, recipient.friend_request)
 }
 
+// Recieves friend-request and gives the option to accept or deny it.
+// If accepted, both sender and recipient adds the other as friend
+// If denied, nothing happens
+
 export function friend_request_recieved(recipient:User): void {
     if (!head(recipient.friend_request)) {
         console.log("You have no new friend requests")
@@ -36,6 +40,8 @@ export function friend_request_recieved(recipient:User): void {
     }
 }
 
+// Function to add friend.
+
 export function add_friend(username: string, friendname: string, userbase: UserBase): void {
     if (is_in_userbase(friendname, userbase)) {
         for (let i = 0; i < userbase.length; i++) {
@@ -49,6 +55,9 @@ export function add_friend(username: string, friendname: string, userbase: UserB
         }
     } else { console.log("user does not exist") }
 }
+
+// Function to remove friend. 
+// If friend is removed, the person who is removed has the remover removed as friend as well
 
 export function remove_friend(username:string, friendname: string, userbase: UserBase):void {
     if (is_in_userbase(friendname, userbase)) {
