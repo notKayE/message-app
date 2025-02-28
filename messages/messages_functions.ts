@@ -12,9 +12,13 @@ export function message_create(user: User, body: string,): Message {
 }
 
 // Sends a message to a recipient. Preconditions that the recipient exists
-// TODO: Find recipient and check if exists on top level.
-// TODO: Update type User to match TempUser.
-export function message_send(recipient: User, message: Message): void {
+export function message_send(recipient: User, user: User, message: Message): void {
+  // If recipient has privacy enabled, abort send message.
+  if (recipient.message_privacy && !user.friends.includes(recipient.name)) {
+    console.log(`Add ${recipient.name} as a friend to send messages.\n`)
+    return;
+  }
+
   message_enqueue(message, recipient.message_queue)
   console.log(`Message sent to ${recipient.name}.\n`)
 }
