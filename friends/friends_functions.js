@@ -25,11 +25,11 @@ function friend_request_recieved(recipient) {
     else {
         var name_of_sender = (0, queue_array_1.head)(recipient.friend_request).name;
         var name_of_recipient = recipient.name;
-        console.log("".concat(name_of_sender, " has sent you a friend request!"));
+        console.log("".concat(name_of_sender, " has sent you a friend request!\n"));
         console.log("Do you accept?");
         console.log("[Y] - Yes");
         console.log("[N] - No");
-        var answer = (0, main_prompt_1.check_prompt)("", true);
+        var answer = (0, main_prompt_1.check_prompt)("", false);
         if (answer === "Y" || answer === "y") {
             recipient.friends.push(name_of_sender);
             (0, queue_array_1.head)(recipient.friend_request).friends.push(name_of_recipient);

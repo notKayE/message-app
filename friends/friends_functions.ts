@@ -25,11 +25,11 @@ export function friend_request_recieved(recipient:User): void {
     } else {
         const name_of_sender = head(recipient.friend_request).name
         const name_of_recipient = recipient.name
-        console.log(`${name_of_sender} has sent you a friend request!`)
+        console.log(`${name_of_sender} has sent you a friend request!\n`)
         console.log("Do you accept?")
         console.log("[Y] - Yes")
         console.log("[N] - No")
-        const answer = check_prompt("", true)
+        const answer = check_prompt("", false)
         if (answer === "Y" ||answer === "y") {
             recipient.friends.push(name_of_sender)
             head(recipient.friend_request).friends.push(name_of_recipient)

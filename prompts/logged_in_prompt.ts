@@ -2,7 +2,7 @@ import { currentUser, UserBase } from "../types";
 import { friends_prompts } from "./friends_prompt";
 import { check_prompt, main_prompt } from "./main_prompt";
 import { choose_message_action } from "./message_prompt";
-import { privacy_prompt } from "./privacy_prompt";
+import { privacy_settings_prompt } from "./privacy_prompt";
 
 
 export function logged_in_prompt(userbase: UserBase, currentUser: currentUser): void {
@@ -10,7 +10,7 @@ export function logged_in_prompt(userbase: UserBase, currentUser: currentUser): 
     console.log("[X] - Sign out")
     console.log("[M] - Messages")
     console.log("[F] - Friends")
-    console.log("[P] - Privacy")
+    console.log("[P] - Privacy settings")
     const action = check_prompt("", true)
     if (action === "X") {
         currentUser.pop()
@@ -20,7 +20,7 @@ export function logged_in_prompt(userbase: UserBase, currentUser: currentUser): 
     } else if (action === "F") {
         friends_prompts(userbase, currentUser)
     } else if (action === "P") {
-        privacy_prompt(userbase, currentUser)
+        privacy_settings_prompt(userbase, currentUser)
     } else {
         console.log("Unknown command")
         logged_in_prompt(userbase, currentUser)

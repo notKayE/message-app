@@ -23,7 +23,9 @@ export function friends_prompts(userbase: UserBase, currentuser: currentUser): v
     // A name is written down - calls the add_friend function
 
     if (action === "A" || action === "a") {
-        console.log("Suggested friends:" + suggested_friends(currentuser[0], userbase))
+        if (currentuser[0].friends.length !== 0) {
+            console.log("Suggested friends:" + suggested_friends(currentuser[0], userbase))
+        } else {}
         const friend_to_add = check_prompt("Friend to add: ", true)
         add_friend(username, friend_to_add, userbase)
         friends_prompts(userbase, currentuser)  
@@ -32,16 +34,26 @@ export function friends_prompts(userbase: UserBase, currentuser: currentUser): v
     // A name is written down - calls the remove_friend function
 
     } else if (action === "R" || action === "r") {
-        console.log("Current friends: " + array_to_string(currentuser[0].friends))
-        const friend_to_remove = check_prompt("Friend to remove: ", true)
-        remove_friend(username, friend_to_remove, userbase)
+        if (currentuser[0].friends.length !== 0) {
+            console.log("Current friends: " + array_to_string(currentuser[0].friends))
+            const friend_to_remove = check_prompt("Friend to remove: ", true)
+            remove_friend(username, friend_to_remove, userbase)
+        } else {
+            console.log("You do not have any friends to remove\n")
+        }
+
         friends_prompts(userbase, currentuser)
 
     // View friends - action
     // Shows the current users list of friends
 
     } else if (action === "V" || action === "v") {
-        console.log("Current friends: " + array_to_string(currentuser[0].friends) + "\n")
+        if (currentuser[0].friends.length !== 0) {
+            console.log("Current friends: " + array_to_string(currentuser[0].friends) + "\n")
+        } else {
+            console.log("You do not have any friends\n")
+        }
+        
         friends_prompts(userbase, currentuser)
 
     // View friend-requests - action
@@ -66,7 +78,7 @@ export function friends_prompts(userbase: UserBase, currentuser: currentUser): v
     // Called on if the typed action is not one of the available options
 
     } else {
-        console.log("unknown command")
+        console.log("Unknown command")
         friends_prompts(userbase, currentuser)
     }
 }

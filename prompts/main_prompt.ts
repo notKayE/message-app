@@ -19,7 +19,7 @@ export function main_prompt(userbase: UserBase, currentUser: currentUser): void 
     } else if (action === 'L') {
         login_prompt(userbase, currentUser)
     } else {
-        console.log("unknown command")
+        console.log("Unknown command")
         main_prompt(userbase, currentUser)
     }
 
@@ -42,11 +42,7 @@ function login_prompt(userbase: UserBase, currentUser: currentUser): void {
 }
 
 export function check_prompt(prompt_string: string, newline: boolean): string {
-    let prompt_type: string | null = readlineSync.question(prompt_string)
-    while (typeof prompt_type !== "string") {
-        console.log("Please enter a valid string")
-        prompt_type = prompt(prompt_string)
-    } 
+    const prompt_type: string = readlineSync.question(prompt_string)
     
     if (newline) {
         console.log("")
@@ -59,7 +55,7 @@ function check_password(username: string, userbase: UserBase, currentUser: curre
     const password = check_prompt("Password: ", true)
         if (password === find_user(username, userbase)?.password) {
             console.log("Successful login, welcome " + username + "\n")
-            currentUser[0] = find_user(username, userbase)!
+            currentUser.push(find_user(username, userbase)!)
         } else {
             console.log("Wrong password, try again \n")
             check_password(username, userbase, currentUser)

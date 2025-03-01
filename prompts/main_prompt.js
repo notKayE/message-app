@@ -20,7 +20,7 @@ function main_prompt(userbase, currentUser) {
         login_prompt(userbase, currentUser);
     }
     else {
-        console.log("unknown command");
+        console.log("Unknown command");
         main_prompt(userbase, currentUser);
     }
 }
@@ -38,10 +38,6 @@ function login_prompt(userbase, currentUser) {
 }
 function check_prompt(prompt_string, newline) {
     var prompt_type = readlineSync.question(prompt_string);
-    while (typeof prompt_type !== "string") {
-        console.log("Please enter a valid string");
-        prompt_type = prompt(prompt_string);
-    }
     if (newline) {
         console.log("");
     }
@@ -52,7 +48,7 @@ function check_password(username, userbase, currentUser) {
     var password = check_prompt("Password: ", true);
     if (password === ((_a = (0, userfunctions_1.find_user)(username, userbase)) === null || _a === void 0 ? void 0 : _a.password)) {
         console.log("Successful login, welcome " + username + "\n");
-        currentUser[0] = (0, userfunctions_1.find_user)(username, userbase);
+        currentUser.push((0, userfunctions_1.find_user)(username, userbase));
     }
     else {
         console.log("Wrong password, try again \n");

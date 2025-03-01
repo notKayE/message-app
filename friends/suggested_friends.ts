@@ -1,6 +1,5 @@
 import { pair, Pair, tail, head } from "../lib/list";
 import { User, UserBase } from "../types";
-import { main_userbase } from "../userbase/userbase";
 import { find_user } from "../userfunctions";
 
 export function suggested_friends(user: User, userbase: UserBase): Array<string> {
@@ -43,6 +42,9 @@ function sort_by_frequency(frequency_array: Array<Pair<string, number>>): Array<
         result.push(" " + head(frequency_array[i]))
     }
 
-    result.splice(5)
+    if(result.length > 5) {
+        result.splice(5)
+    } else {}
+    
     return result
 }

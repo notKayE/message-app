@@ -2,24 +2,13 @@ import { message_create, message_read_and_dequeue, message_send } from "../messa
 import { currentUser, User, UserBase } from "../types";
 import { add_to_userbase, create_user, create_userbase, find_user, is_in_userbase } from "../userfunctions";
 import { logged_in_prompt } from "./logged_in_prompt";
-import { check_prompt, main_prompt } from "./main_prompt";
-
-const userbase: UserBase = create_userbase()
-const currentuser: currentUser = []
-
-const joakim: User = create_user("joakim", "123")
-const ivan: User = create_user("ivan", "234")
-const elis: User = create_user("elis", "345")
-
-add_to_userbase(elis, userbase)
-add_to_userbase(joakim, userbase)
-add_to_userbase(ivan, userbase)
+import { check_prompt } from "./main_prompt";
 
 export function choose_message_action(userbase: UserBase, currentUser: currentUser): void {
     console.log("Choose action")
-    console.log("[S] - send message")
-    console.log("[R] - read message")
-    console.log("[B] - go back")
+    console.log("[S] - Send message")
+    console.log("[R] - Read message")
+    console.log("[B] - Go back")
     const action = check_prompt("", true)
 
     if (action === "S") {

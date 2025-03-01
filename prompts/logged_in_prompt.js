@@ -10,7 +10,7 @@ function logged_in_prompt(userbase, currentUser) {
     console.log("[X] - Sign out");
     console.log("[M] - Messages");
     console.log("[F] - Friends");
-    console.log("[P] - Privacy");
+    console.log("[P] - Privacy settings");
     var action = (0, main_prompt_1.check_prompt)("", true);
     if (action === "X") {
         currentUser.pop();
@@ -23,7 +23,7 @@ function logged_in_prompt(userbase, currentUser) {
         (0, friends_prompt_1.friends_prompts)(userbase, currentUser);
     }
     else if (action === "P") {
-        (0, privacy_prompt_1.privacy_prompt)(userbase, currentUser);
+        (0, privacy_prompt_1.privacy_settings_prompt)(userbase, currentUser);
     }
     else {
         console.log("Unknown command");

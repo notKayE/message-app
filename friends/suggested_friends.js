@@ -39,6 +39,9 @@ function sort_by_frequency(frequency_array) {
     for (var i = 0; i < 5; i++) {
         result.push(" " + (0, list_1.head)(frequency_array[i]));
     }
-    result.splice(5);
+    if (result.length > 5) {
+        result.splice(5);
+    }
+    else { }
     return result;
 }

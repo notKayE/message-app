@@ -1,5 +1,5 @@
 import { lg_new, ListGraph } from "../lib/graphs";
-import { for_each, head, is_null, List, map, pair, tail } from "../lib/list";
+import { head, is_null, List, map, pair, tail } from "../lib/list";
 import { UserBase } from "../types";
 import { lg_shortest_path } from "./shortest_path";
 
