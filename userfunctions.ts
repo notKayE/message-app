@@ -34,13 +34,13 @@ export function find_user(username: string, userbase: UserBase): User | void {
         } else {}
     }
 
-    console.log("did not find user")
+    console.log("Did not find user\n")
 }
 
 export function add_to_userbase(user: User, userbase: UserBase): void {
     if(!is_in_userbase(user.name, userbase)) {
         userbase.push(user)
     } else {
-        console.log("Username already in use")
+        console.log("Username already in use\n")
     }
 }

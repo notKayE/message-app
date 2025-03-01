@@ -1,6 +1,6 @@
 import { User, UserBase, currentUser } from "../types";
 import { logged_in_prompt } from "./logged_in_prompt";
-import { check_prompt } from "./login_prompt";
+import { check_prompt } from "./main_prompt";
 
 export function privacy_prompt(userbase: UserBase, currentUser: currentUser): void {
   const user = currentUser[0]
@@ -12,7 +12,7 @@ export function privacy_prompt(userbase: UserBase, currentUser: currentUser): vo
   console.log(`[C] - ${privacy_choice}`)
   console.log('[B] - Back')
 
-  const user_choice = check_prompt('');
+  const user_choice = check_prompt('', true);
 
   if (user_choice.toLowerCase() === 'b') {
     logged_in_prompt(userbase, currentUser);

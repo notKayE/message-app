@@ -26,5 +26,18 @@ function closest_relation(userbase, user1, user2) {
     var lg = userbase_to_graph(userbase);
     var first = userlist.indexOf(user1);
     var second = userlist.indexOf(user2);
-    return (0, list_1.map)(function (x) { return userlist[x]; }, (0, shortest_path_1.lg_shortest_path)(lg, first, second));
+    var crList = (0, list_1.map)(function (x) { return userlist[x]; }, (0, shortest_path_1.lg_shortest_path)(lg, first, second));
+    var result = "";
+    while (!(0, list_1.is_null)(crList)) {
+        result = result + (0, list_1.head)(crList);
+        if (!(0, list_1.is_null)((0, list_1.tail)(crList))) {
+            result = result + " => ";
+        }
+        else { }
+        crList = (0, list_1.tail)(crList);
+    }
+    if (result === "") {
+        result = "There is no path from you to ".concat(user2);
+    }
+    return result;
 }

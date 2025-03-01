@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.logged_in_prompt = logged_in_prompt;
 var friends_prompt_1 = require("./friends_prompt");
-var login_prompt_1 = require("./login_prompt");
+var main_prompt_1 = require("./main_prompt");
 var message_prompt_1 = require("./message_prompt");
 var privacy_prompt_1 = require("./privacy_prompt");
 function logged_in_prompt(userbase, currentUser) {
@@ -11,10 +11,10 @@ function logged_in_prompt(userbase, currentUser) {
     console.log("[M] - Messages");
     console.log("[F] - Friends");
     console.log("[P] - Privacy");
-    var action = (0, login_prompt_1.check_prompt)("");
+    var action = (0, main_prompt_1.check_prompt)("", true);
     if (action === "X") {
         currentUser.pop();
-        (0, login_prompt_1.login_prompt)(userbase, currentUser);
+        (0, main_prompt_1.main_prompt)(userbase, currentUser);
     }
     else if (action === "M") {
         (0, message_prompt_1.choose_message_action)(userbase, currentUser);

@@ -4,7 +4,7 @@ import { suggested_friends } from "../friends/suggested_friends";
 import { flatten } from "../lib/list";
 import { currentUser, UserBase } from "../types";
 import { logged_in_prompt } from "./logged_in_prompt";
-import { check_prompt } from "./login_prompt";
+import { check_prompt } from "./main_prompt";
 
 // Friends-menu, accessible through the first menu
 
@@ -17,14 +17,14 @@ export function friends_prompts(userbase: UserBase, currentuser: currentUser): v
     console.log("[F] - View Friend-requests")
     console.log("[C] - Lookup closest relation")
     console.log("[B] - Back")
-    const action = check_prompt("")
+    const action = check_prompt("", true)
 
     // Add friend - action
     // A name is written down - calls the add_friend function
 
     if (action === "A" || action === "a") {
-        console.log(`Suggested friends:${suggested_friends(currentuser[0], userbase)}`)
-        const friend_to_add = check_prompt("Friend to add: ")
+        console.log("Suggested friends:" + suggested_friends(currentuser[0], userbase))
+        const friend_to_add = check_prompt("Friend to add: ", true)
         add_friend(username, friend_to_add, userbase)
         friends_prompts(userbase, currentuser)  
         
@@ -32,8 +32,8 @@ export function friends_prompts(userbase: UserBase, currentuser: currentUser): v
     // A name is written down - calls the remove_friend function
 
     } else if (action === "R" || action === "r") {
-        console.log(currentuser[0].friends)
-        const friend_to_remove = check_prompt("Friend to remove: ")
+        console.log("Current friends: " + array_to_string(currentuser[0].friends))
+        const friend_to_remove = check_prompt("Friend to remove: ", true)
         remove_friend(username, friend_to_remove, userbase)
         friends_prompts(userbase, currentuser)
 
@@ -41,7 +41,7 @@ export function friends_prompts(userbase: UserBase, currentuser: currentUser): v
     // Shows the current users list of friends
 
     } else if (action === "V" || action === "v") {
-        console.log(currentuser[0].friends)
+        console.log("Current friends: " + array_to_string(currentuser[0].friends) + "\n")
         friends_prompts(userbase, currentuser)
 
     // View friend-requests - action
@@ -49,14 +49,15 @@ export function friends_prompts(userbase: UserBase, currentuser: currentUser): v
 
     } else if (action === "F" || action === "f") {
         friend_request_recieved(currentuser[0])
+        console.log("")
         friends_prompts(userbase, currentuser)
 
     // Back - action
     // The user is returned to the first prompt-screen
 
     } else if (action === "C" || action === "c") {
-        const target: string = check_prompt("Target user: ")
-        console.log(closest_relation(userbase, currentuser[0].name, target)?.flat(5).slice(0, -1))
+        const target: string = check_prompt("Target user: ", false)
+        console.log(closest_relation(userbase, currentuser[0].name, target) + "\n")
         friends_prompts(userbase, currentuser)
 
     } else if (action === "B" || action === "b") {
@@ -68,4 +69,16 @@ export function friends_prompts(userbase: UserBase, currentuser: currentUser): v
         console.log("unknown command")
         friends_prompts(userbase, currentuser)
     }
+}
+
+function array_to_string(array: Array<string>): string {
+    let result: string = ""
+    for(let i = 0; i < array.length; i++) {
+        result = result + array[i]
+        if (i !== array.length - 1) {
+            result = result + ", "
+        }
+    }
+
+    return result
 }

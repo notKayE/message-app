@@ -36,13 +36,13 @@ function find_user(username, userbase) {
         }
         else { }
     }
-    console.log("did not find user");
+    console.log("Did not find user\n");
 }
 function add_to_userbase(user, userbase) {
     if (!is_in_userbase(user.name, userbase)) {
         userbase.push(user);
     }
     else {
-        console.log("Username already in use");
+        console.log("Username already in use\n");
     }
 }

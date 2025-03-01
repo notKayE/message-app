@@ -6,7 +6,7 @@ exports.add_friend = add_friend;
 exports.remove_friend = remove_friend;
 var userfunctions_1 = require("../userfunctions");
 var queue_array_1 = require("../lib/queue_array");
-var login_prompt_1 = require("../prompts/login_prompt");
+var main_prompt_1 = require("../prompts/main_prompt");
 var friends_prompt_1 = require("../prompts/friends_prompt");
 // Renamed queue-functions
 var request_enqueue = function (user, queue) { return (0, queue_array_1.enqueue)(user, queue); };
@@ -29,7 +29,7 @@ function friend_request_recieved(recipient) {
         console.log("Do you accept?");
         console.log("[Y] - Yes");
         console.log("[N] - No");
-        var answer = (0, login_prompt_1.check_prompt)("");
+        var answer = (0, main_prompt_1.check_prompt)("", true);
         if (answer === "Y" || answer === "y") {
             recipient.friends.push(name_of_sender);
             (0, queue_array_1.head)(recipient.friend_request).friends.push(name_of_recipient);
@@ -38,7 +38,7 @@ function friend_request_recieved(recipient) {
             friends_prompt_1.friends_prompts;
         }
         else {
-            console.log("unknown command");
+            console.log("Unknown command");
         }
         request_dequeue(recipient.friend_request);
     }
@@ -58,7 +58,7 @@ function add_friend(username, friendname, userbase) {
         }
     }
     else {
-        console.log("user does not exist");
+        console.log("User does not exist\n");
     }
 }
 // Function to remove friend. 
@@ -82,6 +82,6 @@ function remove_friend(username, friendname, userbase) {
         }
     }
     else {
-        console.log("user does not exist");
+        console.log("User does not exist\n");
     }
 }

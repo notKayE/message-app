@@ -1,13 +1,30 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.login_prompt = login_prompt;
+exports.main_prompt = main_prompt;
 exports.check_prompt = check_prompt;
 var userfunctions_1 = require("../userfunctions");
 var readlineSync = require("readline-sync"); // importerad modul, kanske kräver npm i readline-sync i terminalen, läser användarinput
 var logged_in_prompt_1 = require("./logged_in_prompt");
-function login_prompt(userbase, currentUser) {
+var new_user_prompt_1 = require("./new_user_prompt");
+function main_prompt(userbase, currentUser) {
     console.log('--------------------------------');
     console.log('Welcome to the messaging app! \n');
+    console.log('Choose action');
+    console.log('[R] - Register user');
+    console.log('[L] - Login');
+    var action = check_prompt('', true);
+    if (action === 'R') {
+        (0, new_user_prompt_1.new_user_prompt)(userbase, currentUser);
+    }
+    else if (action === 'L') {
+        login_prompt(userbase, currentUser);
+    }
+    else {
+        console.log("unknown command");
+        main_prompt(userbase, currentUser);
+    }
+}
+function login_prompt(userbase, currentUser) {
     console.log("Choose a user: joakim, ivan or elis");
     console.log("*All passwords are 123*\n");
     console.log("Login menu");

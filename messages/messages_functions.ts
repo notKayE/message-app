@@ -26,7 +26,7 @@ export function message_send(recipient: User, user: User, message: Message): voi
 // Reads a message then dequeues it.
 export function message_read_and_dequeue(user: User): void {
   // If queue is empty, return.
-  if (!head(user.message_queue)) return console.log('All messages read.');
+  if (!head(user.message_queue)) return console.log('All messages read. \n');
 
   const { sender, body } = head(user.message_queue) as Message;
 

@@ -28,7 +28,7 @@ function message_send(recipient, user, message) {
 function message_read_and_dequeue(user) {
     // If queue is empty, return.
     if (!(0, queue_array_1.head)(user.message_queue))
-        return console.log('All messages read.');
+        return console.log('All messages read. \n');
     var _a = (0, queue_array_1.head)(user.message_queue), sender = _a.sender, body = _a.body;
     console.log("".concat(sender, " says:"));
     console.log("".concat(body, "\n"));

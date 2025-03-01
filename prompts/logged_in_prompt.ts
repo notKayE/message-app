@@ -1,6 +1,6 @@
 import { currentUser, UserBase } from "../types";
 import { friends_prompts } from "./friends_prompt";
-import { check_prompt, login_prompt } from "./login_prompt";
+import { check_prompt, main_prompt } from "./main_prompt";
 import { choose_message_action } from "./message_prompt";
 import { privacy_prompt } from "./privacy_prompt";
 
@@ -11,10 +11,10 @@ export function logged_in_prompt(userbase: UserBase, currentUser: currentUser): 
     console.log("[M] - Messages")
     console.log("[F] - Friends")
     console.log("[P] - Privacy")
-    const action = check_prompt("")
+    const action = check_prompt("", true)
     if (action === "X") {
         currentUser.pop()
-        login_prompt(userbase, currentUser)
+        main_prompt(userbase, currentUser)
     } else if (action === "M") {
         choose_message_action(userbase, currentUser)
     } else if (action === "F") {
