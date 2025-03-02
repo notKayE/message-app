@@ -3,6 +3,8 @@
     "readline-sync": "^1.4.10"
   },
   "devDependencies": {
-    "@types/readline-sync": "^1.4.8"
+    "@types/jest": "^29.5.14",
+    "@types/readline-sync": "^1.4.8",
+    "ts-jest": "^29.2.6"
   }
 }
