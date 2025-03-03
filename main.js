@@ -7,5 +7,4 @@ function program() {
     var currentUser = [];
     (0, login_prompt_1.login_prompt)(userbase, currentUser);
 }
-console.log(userbase_1.main_userbase[0]);
 program();

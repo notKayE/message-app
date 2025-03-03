@@ -4,6 +4,7 @@ import { message_create, message_create_queue, message_read_and_dequeue, message
 import { User, UserBase, Message, currentUser } from "./types";
 import { length, head } from "./lib/list";
 import { dequeue, empty, enqueue, is_empty, Queue } from "./lib/queue_array";
+import { add_to_userbase, create_user, create_userbase, find_user, is_in_userbase } from "./userfunctions";
 
 
 let temp_userbase: UserBase = [
