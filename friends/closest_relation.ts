@@ -36,7 +36,7 @@ export function closest_relation(userbase: UserBase, user1: string, user2: strin
     let crList: List<string> = map(x => userlist[x], lg_shortest_path(lg, first, second))
     let result: string = ""
 
-    while(!is_null(crList)) {
+    while (!is_null(crList)) {
         result = result + head(crList)
         if (!is_null(tail(crList))) {
             result = result + " => "
@@ -44,9 +44,9 @@ export function closest_relation(userbase: UserBase, user1: string, user2: strin
         crList = tail(crList)
     }
 
-    if(result === "") {
+    if (result === "") {
         result = `There is no path from you to ${user2}`
-    }
+    } else {}
      
     return result
 }

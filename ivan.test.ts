@@ -30,9 +30,9 @@ test("Find user, add to userbase", () => {
 })
 
 test('Add friend', () => {
-    const userbase = create_userbase()
-    const elis = create_user("elis", "123")
-    const ivan = create_user("ivan", "123")
+    const userbase: UserBase = create_userbase()
+    const elis: User = create_user("elis", "123")
+    const ivan: User = create_user("ivan", "123")
 
     add_to_userbase(elis, userbase)
     add_to_userbase(ivan, userbase)
@@ -43,8 +43,8 @@ test('Add friend', () => {
 })
   
 test('Send friend request', () => {
-    const joakim = main_userbase[0];
-    const elis = main_userbase[2];
+    const joakim: User = main_userbase[0];
+    const elis: User = main_userbase[2];
   
     friend_request_send(joakim, elis);
   
@@ -53,9 +53,9 @@ test('Send friend request', () => {
 })
   
 test('Remove friend', () => {
-    const userbase = create_userbase()
-    const elis = create_user("elis", "123")
-    const ivan = create_user("ivan", "123")
+    const userbase: UserBase = create_userbase()
+    const elis: User = create_user("elis", "123")
+    const ivan: User = create_user("ivan", "123")
 
     add_to_userbase(elis, userbase)
     add_to_userbase(ivan, userbase)
