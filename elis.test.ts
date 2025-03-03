@@ -57,10 +57,10 @@ let temp_userbase: UserBase = [
       }
 ];
 
-/*
+
 const message_enqueue = (message: Message, queue: Queue<Message | unknown>): void => enqueue(message, queue);
 const message_dequeue = (queue: Queue<Message | unknown>): void => dequeue(queue);
-*/
+
 
 
 test("Closest relation", () => {
@@ -71,8 +71,8 @@ test("Closest relation", () => {
 test("Suggested friends", () => {
     const first_user = temp_userbase[0]
     const second_user = temp_userbase[1]
-    expect(suggested_friends(first_user, temp_userbase)).toStrictEqual(["kalle", "elis"])
-    expect(suggested_friends(second_user, temp_userbase)).toStrictEqual(["eva"])
+    expect(suggested_friends(first_user, temp_userbase)).toBe(["kalle", "elis"])
+    expect(suggested_friends(second_user, temp_userbase)).toBe(["eva"])
 })
 
 test("Message send", () => {
@@ -86,8 +86,15 @@ test("Message create queue", () => {
     expect(message_create_queue()).toStrictEqual(empty())
 })
 
-/*
-test("Message read and dequeue", () => {
 
+test("Message enqueue", () => {
+  const first_user = temp_userbase[0]
+  const second_user = temp_userbase[1]
+  message_enqueue(message_create(first_user, "Hej"), second_user.message_queue)
+  expect(second_user.message_queue).toStrictEqual([0, 1, [{"body": "Hej", "sender": "joakim"}]])
 })
-*/
+
+test("Message dequeue", () => {
+  const first_user = temp_userbase[2]
+  expect(message_dequeue(first_user.message_queue)).toBe(undefined)
+})
