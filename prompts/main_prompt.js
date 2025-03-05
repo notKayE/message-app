@@ -6,6 +6,11 @@ var userfunctions_1 = require("../userfunctions");
 var readlineSync = require("readline-sync"); // importerad modul, kanske kräver npm i readline-sync i terminalen, läser användarinput
 var logged_in_prompt_1 = require("./logged_in_prompt");
 var new_user_prompt_1 = require("./new_user_prompt");
+/**
+ * The main prompt menu that starts with the program.
+ * @param userbase - Userbase to work in.
+ * @param currentUser - Logged in user, starts without one logged in.
+ */
 function main_prompt(userbase, currentUser) {
     console.log('--------------------------------');
     console.log('Welcome to the messaging app! \n');

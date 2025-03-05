@@ -3,6 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.main_userbase = exports.names = void 0;
 var friends_functions_1 = require("../friends/friends_functions");
 var userfunctions_1 = require("../userfunctions");
+// README
+// Only a helper function to create random userbases.
+// Not in use in the code.
 // Users and their names
 exports.names = ['joakim', 'ivan', 'elis', 'kalle', 'eva', 'nisse', 'pelle', 'niklas', 'johanna', 'stina',
     'jan', 'andreas', 'lina', 'amanda', 'per', 'tristan', 'froppe', 'nina', 'hanna'];
@@ -28,6 +31,9 @@ var _loop_1 = function (i) {
 for (var i = 0; i < ub.length; i++) {
     _loop_1(i);
 }
+/**
+ * The main userbase used in the program.
+ */
 exports.main_userbase = [
     {
         name: 'joakim',
