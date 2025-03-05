@@ -1,4 +1,5 @@
 import { add_friend, friend_request_send, remove_friend } from "./friends/friends_functions"
+import { suggested_friends } from "./friends/suggested_friends"
 import { empty, head } from "./lib/queue_array"
 import { message_create_queue } from "./messages/messages_functions"
 import { User, UserBase } from "./types"
@@ -67,4 +68,21 @@ test('Remove friend', () => {
   
     expect(ivan.friends).toStrictEqual([])
   
+})
+
+test('Suggested friends', () => {
+    const userbase: UserBase = create_userbase()
+    const elis: User = create_user("elis", "123")
+    const ivan: User = create_user("ivan", "123")
+    const joakim: User = create_user("joakim", "123")
+  
+    add_to_userbase(elis, userbase)
+    add_to_userbase(ivan, userbase)
+    add_to_userbase(joakim, userbase)
+
+    elis.friends = ["joakim"]
+    ivan.friends = ["joakim"]
+    joakim.friends = ["ivan", "elis"]
+
+    expect(suggested_friends(elis, userbase)).toStrictEqual([" ivan"])
 })

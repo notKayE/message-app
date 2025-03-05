@@ -1,4 +1,4 @@
-import { pair, Pair, tail, head } from "../lib/list";
+import { pair, Pair, tail, head, is_null } from "../lib/list";
 import { User, UserBase } from "../types";
 import { find_user } from "../userfunctions";
 
@@ -53,7 +53,9 @@ function sort_by_frequency(frequency_array: Array<Pair<string, number>>): Array<
     }
 
     for(let i = 0; i < 5; i++) {
-        result.push(" " + head(frequency_array[i]))
+        if(frequency_array[i] !== undefined) {
+            result.push(" " + head(frequency_array[i]))
+        } else {} 
     }
 
     if(result.length > 5) {

@@ -1,6 +1,6 @@
 import { closest_relation } from "./friends/closest_relation";
 import { message_create, message_create_queue, message_send } from "./messages/messages_functions";
-import { UserBase, Message } from "./types";
+import { UserBase, Message, User } from "./types";
 import { dequeue, empty, enqueue, Queue } from "./lib/queue_array";
 
 
@@ -68,8 +68,8 @@ test("Closest relation", () => {
 })
 
 test("Message send", () => {
-    const first_user = temp_userbase[0]
-    const second_user = temp_userbase[1]
+    const first_user: User = temp_userbase[0]
+    const second_user: User = temp_userbase[1]
     message_send(first_user, second_user, message_create(first_user, "Hej!"))
     expect(first_user.message_queue).toStrictEqual([0, 1, [{"body": "Hej!", "sender": "joakim"}]])
 })
@@ -80,13 +80,13 @@ test("Message create queue", () => {
 
 
 test("Message enqueue", () => {
-  const first_user = temp_userbase[0]
-  const second_user = temp_userbase[1]
+  const first_user: User = temp_userbase[0]
+  const second_user: User = temp_userbase[1]
   message_enqueue(message_create(first_user, "Hej"), second_user.message_queue)
   expect(second_user.message_queue).toStrictEqual([0, 1, [{"body": "Hej", "sender": "joakim"}]])
 })
 
 test("Message dequeue", () => {
-  const first_user = temp_userbase[2]
+  const first_user: User = temp_userbase[2]
   expect(message_dequeue(first_user.message_queue)).toBe(undefined)
 })
