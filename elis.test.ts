@@ -7,7 +7,7 @@ import { dequeue, empty, enqueue, is_empty, Queue } from "./lib/queue_array";
 import { add_to_userbase, create_user, create_userbase, find_user, is_in_userbase } from "./userfunctions";
 
 
-let temp_userbase: UserBase = [
+const temp_userbase: UserBase = [
     {
         name: 'joakim',
         password: '123',
@@ -65,8 +65,8 @@ const message_dequeue = (queue: Queue<Message | unknown>): void => dequeue(queue
 
 
 test("Closest relation", () => {
-    expect(length(closest_relation(temp_userbase, "elis", "joakim"))).toBe(3)
-    expect(length(closest_relation(temp_userbase, "fredrik", "ivan"))).toBe(4)
+    expect((closest_relation(temp_userbase, "elis", "joakim"))).toStrictEqual("elis => ivan => joakim")
+    expect((closest_relation(temp_userbase, "fredrik", "ivan"))).toStrictEqual("fredrik => eva => kalle => ivan")
 })
 
 test("Message send", () => {
