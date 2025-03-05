@@ -3,7 +3,7 @@ import { head, is_null, List, map, pair, tail } from "../lib/list";
 import { UserBase } from "../types";
 import { lg_shortest_path } from "./shortest_path";
 
-
+// Makes a userbase into a list
 function userbase_to_userlist(userbase: UserBase): Array<string> {
     let result: Array<string> = []
 
@@ -14,6 +14,7 @@ function userbase_to_userlist(userbase: UserBase): Array<string> {
     return result
 }
 
+// Makes a userbase into a graph
 function userbase_to_graph(userbase: UserBase): ListGraph {
     const userlist: Array<string> = userbase_to_userlist(userbase)
     let lg: ListGraph = lg_new(userbase.length)
@@ -27,6 +28,14 @@ function userbase_to_graph(userbase: UserBase): ListGraph {
     return lg  
 }
 
+/**
+ * Finds a pathing to another user through mutual friends.
+ * @param userbase - Userbase to search in.
+ * @param user1 - The user to find path from.
+ * @param user2 - The user to find path to.
+ * @returns the path/closest relation a user have to another user. If there's no
+ *          possible path, it won't return a pathing.
+ */
 export function closest_relation(userbase: UserBase, user1: string, user2: string): string {
     const userlist: Array<string> = userbase_to_userlist(userbase)
     const lg: ListGraph = userbase_to_graph(userbase)

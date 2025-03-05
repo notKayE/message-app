@@ -11,7 +11,14 @@ export function message_create(user: User, body: string,): Message {
   return { sender: user.name, body };
 }
 
-// Sends a message to a recipient. Preconditions that the recipient exists
+/**
+ * Sends a message to a message to another user.
+ * @precon - The users exists.
+ * @param recipient - The user to send message to.
+ * @param user - The user sending the message.
+ * @param message
+ * @returns 
+ */
 export function message_send(recipient: User, user: User, message: Message): void {
   // If recipient has privacy enabled, abort send message.
   if (recipient.message_privacy && !user.friends.includes(recipient.name)) {
@@ -23,7 +30,10 @@ export function message_send(recipient: User, user: User, message: Message): voi
   console.log(`Message sent to ${recipient.name}.\n`)
 }
 
-// Reads a message then dequeues it.
+/**
+ * Takes the head of the message, reads it and then dequeues it.
+ * @param user - The user to read the messages.
+ */
 export function message_read_and_dequeue(user: User): void {
   // If queue is empty, return.
   if (!head(user.message_queue)) return console.log('All messages read. \n');

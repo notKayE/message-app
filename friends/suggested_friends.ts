@@ -2,6 +2,13 @@ import { pair, Pair, tail, head } from "../lib/list";
 import { User, UserBase } from "../types";
 import { find_user } from "../userfunctions";
 
+
+/**
+ * A function that suggests new friends to the user.
+ * @param user - A user to help suggest friends to.
+ * @param userbase - A userbase to get friends suggested from.
+ * @returns 
+ */
 export function suggested_friends(user: User, userbase: UserBase): Array<string> {
     const suggested_friends_array: Array<string> = []
     const frequency: Array<Pair<string, number>> = []
@@ -25,6 +32,13 @@ export function suggested_friends(user: User, userbase: UserBase): Array<string>
     return sort_by_frequency(frequency)
 }
 
+
+/**
+ * Sorts the array of suggested friends. The "closer" the suggested friend is
+ * to you, the further up it's pushed up in the array.
+ * @param frequency_array 
+ * @returns a sorted array with suggested friends.
+ */
 function sort_by_frequency(frequency_array: Array<Pair<string, number>>): Array<string> {
     const result: Array<string> = []
 

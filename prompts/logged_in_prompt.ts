@@ -4,7 +4,7 @@ import { check_prompt, main_prompt } from "./main_prompt";
 import { choose_message_action } from "./message_prompt";
 import { privacy_settings_prompt } from "./privacy_prompt";
 
-
+// Prompt menu when logged in.
 export function logged_in_prompt(userbase: UserBase, currentUser: currentUser): void {
     console.log("Choose action")
     console.log("[X] - Sign out")

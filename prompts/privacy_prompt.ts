@@ -2,6 +2,7 @@ import { User, UserBase, currentUser } from "../types";
 import { logged_in_prompt } from "./logged_in_prompt";
 import { check_prompt } from "./main_prompt";
 
+// Prompt menu for privacy settings.
 export function privacy_settings_prompt(userbase: UserBase, currentUser: currentUser): void {
   console.log('Choose action')
     console.log('[C] - Change password')
@@ -22,6 +23,7 @@ export function privacy_settings_prompt(userbase: UserBase, currentUser: current
     }
 }
 
+// Prompt menu for changing privacy settings.
 function privacy_prompt(userbase: UserBase, currentUser: currentUser): void {
   const user = currentUser[0]
   const privacy_current_setting = user.message_privacy ? 'ENABLED' : 'DISABLED';
@@ -45,6 +47,7 @@ function privacy_prompt(userbase: UserBase, currentUser: currentUser): void {
   }
 }
 
+// Prompt menu for changing password.
 function change_password_prompt(userbase: UserBase, currentUser: currentUser): void {
   const old_password: string = check_prompt("Enter current password: ", false)
 

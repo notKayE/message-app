@@ -4,6 +4,12 @@ import * as readlineSync from 'readline-sync'; // importerad modul, kanske kräv
 import { logged_in_prompt } from "./logged_in_prompt";
 import { new_user_prompt } from "./new_user_prompt";
 
+
+/**
+ * The main prompt menu that starts with the program.
+ * @param userbase - Userbase to work in.
+ * @param currentUser - Logged in user, starts without one logged in.
+ */
 export function main_prompt(userbase: UserBase, currentUser: currentUser): void {
     console.log('--------------------------------')
     console.log('Welcome to the messaging app! \n')

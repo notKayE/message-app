@@ -4,6 +4,7 @@ import { add_to_userbase, create_user, create_userbase, find_user, is_in_userbas
 import { logged_in_prompt } from "./logged_in_prompt";
 import { check_prompt } from "./main_prompt";
 
+// Prompt menu for messages.
 export function choose_message_action(userbase: UserBase, currentUser: currentUser): void {
     console.log("Choose action")
     console.log("[S] - Send message")
@@ -23,6 +24,7 @@ export function choose_message_action(userbase: UserBase, currentUser: currentUs
     }
 }
 
+// Prompt menu to send messages.
 function send_message_prompt(userbase: UserBase, currentUser: currentUser): void {
     let recipent = check_prompt("Recipent: ", false)
 
@@ -38,6 +40,7 @@ function send_message_prompt(userbase: UserBase, currentUser: currentUser): void
     choose_message_action(userbase, currentUser)
 }
 
+// Prompt menu to read messages.
 function read_message_prompt(userbase: UserBase, currentUser: currentUser): void {
     message_read_and_dequeue(currentUser[0])
     choose_message_action(userbase, currentUser)
