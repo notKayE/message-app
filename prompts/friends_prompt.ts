@@ -82,6 +82,7 @@ export function friends_prompts(userbase: UserBase, currentuser: CurrentUser): v
     }
 }
 
+// Helper function to make strings of an array.
 function array_to_string(array: Array<string>): string {
     let result: string = ""
     for(let i = 0; i < array.length; i++) {

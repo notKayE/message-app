@@ -14,7 +14,14 @@ var message_dequeue = function (queue) { return (0, queue_array_1.dequeue)(queue
 function message_create(user, body) {
     return { sender: user.name, body: body };
 }
-// Sends a message to a recipient. Preconditions that the recipient exists
+/**
+ * Sends a message to a message to another user.
+ * @precon - The users exists.
+ * @param recipient - The user to send message to.
+ * @param user - The user sending the message.
+ * @param message
+ * @returns
+ */
 function message_send(recipient, user, message) {
     // If recipient has privacy enabled, abort send message.
     if (recipient.message_privacy && !user.friends.includes(recipient.name)) {
@@ -24,7 +31,10 @@ function message_send(recipient, user, message) {
     message_enqueue(message, recipient.message_queue);
     console.log("Message sent to ".concat(recipient.name, ".\n"));
 }
-// Reads a message then dequeues it.
+/**
+ * Takes the head of the message, reads it and then dequeues it.
+ * @param user - The user to read the messages.
+ */
 function message_read_and_dequeue(user) {
     // If queue is empty, return.
     if (!(0, queue_array_1.head)(user.message_queue))

@@ -75,6 +75,7 @@ function friends_prompts(userbase, currentuser) {
         friends_prompts(userbase, currentuser);
     }
 }
+// Helper function to make strings of an array.
 function array_to_string(array) {
     var result = "";
     for (var i = 0; i < array.length; i++) {

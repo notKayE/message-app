@@ -1,4 +1,3 @@
-import { suggested_friends } from "./friends/suggested_friends";
 import { closest_relation } from "./friends/closest_relation";
 import { message_create, message_create_queue, message_send } from "./messages/messages_functions";
 import { UserBase, Message } from "./types";

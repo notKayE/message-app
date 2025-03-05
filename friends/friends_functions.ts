@@ -5,12 +5,10 @@ import { check_prompt } from '../prompts/main_prompt';
 import { friends_prompts } from '../prompts/friends_prompt';
 
 // Renamed queue-functions
-
-const request_enqueue= (user: User, queue: Queue<User>): void => enqueue(user, queue)
+const request_enqueue = (user: User, queue: Queue<User>): void => enqueue(user, queue)
 const request_dequeue = (queue: Queue<User>): void => dequeue(queue)
 
 // Sends friend-request
-
 export function friend_request_send(recipient: User, sender: User): void {
     request_enqueue(sender, recipient.friend_request)
 }

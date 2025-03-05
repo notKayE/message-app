@@ -5,6 +5,7 @@ var friends_prompt_1 = require("./friends_prompt");
 var main_prompt_1 = require("./main_prompt");
 var message_prompt_1 = require("./message_prompt");
 var privacy_prompt_1 = require("./privacy_prompt");
+// Prompt menu when logged in.
 function logged_in_prompt(userbase, currentUser) {
     console.log("Choose action");
     console.log("[X] - Sign out");

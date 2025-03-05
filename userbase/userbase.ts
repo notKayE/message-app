@@ -2,6 +2,10 @@ import { add_friend } from "../friends/friends_functions";
 import { User, UserBase } from "../types";
 import { add_to_userbase, create_user, create_userbase } from "../userfunctions";
 
+// README
+// Only a helper function to create random userbases.
+// Not in use in the code.
+
 // Users and their names
 export const names: Array<string> = ['joakim', 'ivan', 'elis', 'kalle', 'eva', 'nisse', 'pelle', 'niklas', 'johanna', 'stina',
   'jan', 'andreas', 'lina', 'amanda', 'per', 'tristan', 'froppe', 'nina', 'hanna'];
@@ -28,6 +32,9 @@ for (let i = 0; i < ub.length; i++) {
   })
 }
 
+/**
+ * The main userbase used in the program.
+ */
 export const main_userbase: UserBase = [
   {
     name: 'joakim',

@@ -3,6 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.suggested_friends = suggested_friends;
 var list_1 = require("../lib/list");
 var userfunctions_1 = require("../userfunctions");
+/**
+ * A function that suggests new friends to the user.
+ * @param user - A user to help suggest friends to.
+ * @param userbase - A userbase to get friends suggested from.
+ * @returns
+ */
 function suggested_friends(user, userbase) {
     var suggested_friends_array = [];
     var frequency = [];
@@ -25,6 +31,12 @@ function suggested_friends(user, userbase) {
     }
     return sort_by_frequency(frequency);
 }
+/**
+ * Sorts the array of suggested friends. The "closer" the suggested friend is
+ * to you, the further up it's pushed up in the array.
+ * @param frequency_array
+ * @returns a sorted array with suggested friends.
+ */
 function sort_by_frequency(frequency_array) {
     var result = [];
     for (var a = 1; a < frequency_array.length; a++) {

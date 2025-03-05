@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.privacy_settings_prompt = privacy_settings_prompt;
 var logged_in_prompt_1 = require("./logged_in_prompt");
 var main_prompt_1 = require("./main_prompt");
+// Prompt menu for privacy settings.
 function privacy_settings_prompt(userbase, currentUser) {
     console.log('Choose action');
     console.log('[C] - Change password');
@@ -23,6 +24,7 @@ function privacy_settings_prompt(userbase, currentUser) {
         privacy_settings_prompt(userbase, currentUser);
     }
 }
+// Prompt menu for changing privacy settings.
 function privacy_prompt(userbase, currentUser) {
     var user = currentUser[0];
     var privacy_current_setting = user.message_privacy ? 'ENABLED' : 'DISABLED';
@@ -44,6 +46,7 @@ function privacy_prompt(userbase, currentUser) {
         privacy_prompt(userbase, currentUser);
     }
 }
+// Prompt menu for changing password.
 function change_password_prompt(userbase, currentUser) {
     var old_password = (0, main_prompt_1.check_prompt)("Enter current password: ", false);
     if (old_password === currentUser[0].password) {

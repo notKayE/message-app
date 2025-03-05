@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1740997117325" clover="3.2.0">
-  <project timestamp="1740997117325" name="All files">
-    <metrics statements="564" coveredstatements="178" conditionals="200" coveredconditionals="19" methods="115" coveredmethods="16" elements="879" coveredelements="213" complexity="0" loc="564" ncloc="564" packages="6" files="16" classes="16"/>
+<coverage generated="1740994854633" clover="3.2.0">
+  <project timestamp="1740994854633" name="All files">
+    <metrics statements="60" coveredstatements="37" conditionals="12" coveredconditionals="4" methods="17" coveredmethods="7" elements="89" coveredelements="48" complexity="0" loc="60" ncloc="60" packages="3" files="3" classes="3"/>
     <package name="PKD project code">
       <metrics statements="21" coveredstatements="19" conditionals="6" coveredconditionals="4" methods="5" coveredmethods="5"/>
-      <file name="userfunctions.js" path="C:\Users\ivbr5150\OneDrive - Uppsala universitet\Documents\PKD\Code\PKD project code\userfunctions.js">
+      <file name="userfunctions.js" path="/Users/joakimborg/Documents/Studier/Programkonstruktion och Datastrukter/Projekt/message-app/userfunctions.js">
         <metrics statements="21" coveredstatements="19" conditionals="6" coveredconditionals="4" methods="5" coveredmethods="5"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -368,9 +368,9 @@
         <line num="66" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="PKD project code.messages">
+    <package name="message-app.messages">
       <metrics statements="22" coveredstatements="10" conditionals="6" coveredconditionals="0" methods="6" coveredmethods="1"/>
-      <file name="messages_functions.js" path="C:\Users\ivbr5150\OneDrive - Uppsala universitet\Documents\PKD\Code\PKD project code\messages\messages_functions.js">
+      <file name="messages_functions.js" path="/Users/joakimborg/Documents/Studier/Programkonstruktion och Datastrukter/Projekt/message-app/messages/messages_functions.js">
         <metrics statements="22" coveredstatements="10" conditionals="6" coveredconditionals="0" methods="6" coveredmethods="1"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
