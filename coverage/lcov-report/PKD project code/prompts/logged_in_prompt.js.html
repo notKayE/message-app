@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for PKD project code/messages/messages_functions.js</title>
+    <title>Code coverage report for PKD project code/prompts/logged_in_prompt.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">PKD project code/messages</a> messages_functions.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">PKD project code/prompts</a> logged_in_prompt.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40.74% </span>
+                <span class="strong">26.08% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/27</span>
+                <span class='fraction'>6/23</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>0/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">16.66% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/6</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">45.45% </span>
+                <span class="strong">26.08% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/22</span>
+                <span class='fraction'>6/23</span>
             </div>
         
             
@@ -95,11 +95,7 @@
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -107,17 +103,12 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -125,51 +116,48 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.message_create_queue = void 0;
-exports.message_create = message_create;
-exports.message_send = message_send;
-exports.message_read_and_dequeue = message_read_and_dequeue;
-var queue_array_1 = require("../lib/queue_array");
-// Three renamed queue functions.
-var message_create_queue = function () { return (0, queue_array_1.empty)(); };
-exports.message_create_queue = message_create_queue;
-var message_enqueue = <span class="fstat-no" title="function not covered" >fu</span>nction (message, queue) { <span class="cstat-no" title="statement not covered" >return (0, queue_array_1.enqueue)(message, queue); </span>};
-var message_dequeue = <span class="fstat-no" title="function not covered" >fu</span>nction (queue) { <span class="cstat-no" title="statement not covered" >return (0, queue_array_1.dequeue)(queue); </span>};
-// Creates a message from a User.
-function <span class="fstat-no" title="function not covered" >message_create(</span>user, body) {
-<span class="cstat-no" title="statement not covered" >    return { sender: user.name, body: body };</span>
-}
-// Sends a message to a recipient. Preconditions that the recipient exists
-function <span class="fstat-no" title="function not covered" >message_send(</span>recipient, user, message) {
-    // If recipient has privacy enabled, abort send message.
-<span class="cstat-no" title="statement not covered" >    if (recipient.message_privacy &amp;&amp; !user.friends.includes(recipient.name)) {</span>
-<span class="cstat-no" title="statement not covered" >        console.log("Add ".concat(recipient.name, " as a friend to send messages.\n"));</span>
-<span class="cstat-no" title="statement not covered" >        return;</span>
+exports.logged_in_prompt = logged_in_prompt;
+var friends_prompt_1 = require("./friends_prompt");
+var main_prompt_1 = require("./main_prompt");
+var message_prompt_1 = require("./message_prompt");
+var privacy_prompt_1 = require("./privacy_prompt");
+function <span class="fstat-no" title="function not covered" >logged_in_prompt(</span>userbase, currentUser) {
+<span class="cstat-no" title="statement not covered" >    console.log("Choose action");</span>
+<span class="cstat-no" title="statement not covered" >    console.log("[X] - Sign out");</span>
+<span class="cstat-no" title="statement not covered" >    console.log("[M] - Messages");</span>
+<span class="cstat-no" title="statement not covered" >    console.log("[F] - Friends");</span>
+<span class="cstat-no" title="statement not covered" >    console.log("[P] - Privacy settings");</span>
+    var action = <span class="cstat-no" title="statement not covered" >(0, main_prompt_1.check_prompt)("", true);</span>
+<span class="cstat-no" title="statement not covered" >    if (action === "X") {</span>
+<span class="cstat-no" title="statement not covered" >        currentUser.pop();</span>
+<span class="cstat-no" title="statement not covered" >        (0, main_prompt_1.main_prompt)(userbase, currentUser);</span>
     }
-<span class="cstat-no" title="statement not covered" >    message_enqueue(message, recipient.message_queue);</span>
-<span class="cstat-no" title="statement not covered" >    console.log("Message sent to ".concat(recipient.name, ".\n"));</span>
-}
-// Reads a message then dequeues it.
-function <span class="fstat-no" title="function not covered" >message_read_and_dequeue(</span>user) {
-    // If queue is empty, return.
-<span class="cstat-no" title="statement not covered" >    if (!(0, queue_array_1.head)(user.message_queue))</span>
-<span class="cstat-no" title="statement not covered" >        return console.log('All messages read. \n');</span>
-    var _a = <span class="cstat-no" title="statement not covered" >(0, queue_array_1.head)(user.message_queue),</span> sender = <span class="cstat-no" title="statement not covered" >_a.sender,</span> body = <span class="cstat-no" title="statement not covered" >_a.body;</span>
-<span class="cstat-no" title="statement not covered" >    console.log("".concat(sender, " says:"));</span>
-<span class="cstat-no" title="statement not covered" >    console.log("".concat(body, "\n"));</span>
-<span class="cstat-no" title="statement not covered" >    message_dequeue(user.message_queue);</span>
+    else <span class="cstat-no" title="statement not covered" >if (action === "M") {</span>
+<span class="cstat-no" title="statement not covered" >        (0, message_prompt_1.choose_message_action)(userbase, currentUser);</span>
+    }
+    else <span class="cstat-no" title="statement not covered" >if (action === "F") {</span>
+<span class="cstat-no" title="statement not covered" >        (0, friends_prompt_1.friends_prompts)(userbase, currentUser);</span>
+    }
+    else <span class="cstat-no" title="statement not covered" >if (action === "P") {</span>
+<span class="cstat-no" title="statement not covered" >        (0, privacy_prompt_1.privacy_settings_prompt)(userbase, currentUser);</span>
+    }
+    else {
+<span class="cstat-no" title="statement not covered" >        console.log("Unknown command");</span>
+<span class="cstat-no" title="statement not covered" >        logged_in_prompt(userbase, currentUser);</span>
+    }
 }
 &nbsp;</pre></td></tr></table></pre>
 

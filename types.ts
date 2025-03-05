@@ -11,7 +11,7 @@ export type User = {
 
 export type UserBase = Array<User>
 
-export type currentUser = Array<User>
+export type CurrentUser = Array<User>
 
 export type Message = {
     sender: string,

@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for PKD project code/messages/messages_functions.js</title>
+    <title>Code coverage report for PKD project code/prompts/message_prompt.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">PKD project code/messages</a> messages_functions.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">PKD project code/prompts</a> message_prompt.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40.74% </span>
+                <span class="strong">20.68% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/27</span>
+                <span class='fraction'>6/29</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">16.66% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/6</span>
+                <span class='fraction'>0/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">45.45% </span>
+                <span class="strong">20.68% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/22</span>
+                <span class='fraction'>6/29</span>
             </div>
         
             
@@ -99,7 +99,13 @@
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -107,17 +113,10 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -125,6 +124,12 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -132,44 +137,57 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.message_create_queue = void 0;
-exports.message_create = message_create;
-exports.message_send = message_send;
-exports.message_read_and_dequeue = message_read_and_dequeue;
-var queue_array_1 = require("../lib/queue_array");
-// Three renamed queue functions.
-var message_create_queue = function () { return (0, queue_array_1.empty)(); };
-exports.message_create_queue = message_create_queue;
-var message_enqueue = <span class="fstat-no" title="function not covered" >fu</span>nction (message, queue) { <span class="cstat-no" title="statement not covered" >return (0, queue_array_1.enqueue)(message, queue); </span>};
-var message_dequeue = <span class="fstat-no" title="function not covered" >fu</span>nction (queue) { <span class="cstat-no" title="statement not covered" >return (0, queue_array_1.dequeue)(queue); </span>};
-// Creates a message from a User.
-function <span class="fstat-no" title="function not covered" >message_create(</span>user, body) {
-<span class="cstat-no" title="statement not covered" >    return { sender: user.name, body: body };</span>
-}
-// Sends a message to a recipient. Preconditions that the recipient exists
-function <span class="fstat-no" title="function not covered" >message_send(</span>recipient, user, message) {
-    // If recipient has privacy enabled, abort send message.
-<span class="cstat-no" title="statement not covered" >    if (recipient.message_privacy &amp;&amp; !user.friends.includes(recipient.name)) {</span>
-<span class="cstat-no" title="statement not covered" >        console.log("Add ".concat(recipient.name, " as a friend to send messages.\n"));</span>
-<span class="cstat-no" title="statement not covered" >        return;</span>
+exports.choose_message_action = choose_message_action;
+var messages_functions_1 = require("../messages/messages_functions");
+var userfunctions_1 = require("../userfunctions");
+var logged_in_prompt_1 = require("./logged_in_prompt");
+var main_prompt_1 = require("./main_prompt");
+function <span class="fstat-no" title="function not covered" >choose_message_action(</span>userbase, currentUser) {
+<span class="cstat-no" title="statement not covered" >    console.log("Choose action");</span>
+<span class="cstat-no" title="statement not covered" >    console.log("[S] - Send message");</span>
+<span class="cstat-no" title="statement not covered" >    console.log("[R] - Read message");</span>
+<span class="cstat-no" title="statement not covered" >    console.log("[B] - Go back");</span>
+    var action = <span class="cstat-no" title="statement not covered" >(0, main_prompt_1.check_prompt)("", true);</span>
+<span class="cstat-no" title="statement not covered" >    if (action === "S") {</span>
+<span class="cstat-no" title="statement not covered" >        send_message_prompt(userbase, currentUser);</span>
     }
-<span class="cstat-no" title="statement not covered" >    message_enqueue(message, recipient.message_queue);</span>
-<span class="cstat-no" title="statement not covered" >    console.log("Message sent to ".concat(recipient.name, ".\n"));</span>
+    else <span class="cstat-no" title="statement not covered" >if (action === "R") {</span>
+<span class="cstat-no" title="statement not covered" >        read_message_prompt(userbase, currentUser);</span>
+    }
+    else <span class="cstat-no" title="statement not covered" >if (action === "B") {</span>
+<span class="cstat-no" title="statement not covered" >        (0, logged_in_prompt_1.logged_in_prompt)(userbase, currentUser);</span>
+    }
+    else {
+<span class="cstat-no" title="statement not covered" >        console.log("Unknown command");</span>
+<span class="cstat-no" title="statement not covered" >        choose_message_action(userbase, currentUser);</span>
+    }
 }
-// Reads a message then dequeues it.
-function <span class="fstat-no" title="function not covered" >message_read_and_dequeue(</span>user) {
-    // If queue is empty, return.
-<span class="cstat-no" title="statement not covered" >    if (!(0, queue_array_1.head)(user.message_queue))</span>
-<span class="cstat-no" title="statement not covered" >        return console.log('All messages read. \n');</span>
-    var _a = <span class="cstat-no" title="statement not covered" >(0, queue_array_1.head)(user.message_queue),</span> sender = <span class="cstat-no" title="statement not covered" >_a.sender,</span> body = <span class="cstat-no" title="statement not covered" >_a.body;</span>
-<span class="cstat-no" title="statement not covered" >    console.log("".concat(sender, " says:"));</span>
-<span class="cstat-no" title="statement not covered" >    console.log("".concat(body, "\n"));</span>
-<span class="cstat-no" title="statement not covered" >    message_dequeue(user.message_queue);</span>
+function <span class="fstat-no" title="function not covered" >send_message_prompt(</span>userbase, currentUser) {
+    var recipent = <span class="cstat-no" title="statement not covered" >(0, main_prompt_1.check_prompt)("Recipent: ", false);</span>
+<span class="cstat-no" title="statement not covered" >    while (!(0, userfunctions_1.is_in_userbase)(recipent, userbase)) {</span>
+<span class="cstat-no" title="statement not covered" >        console.log("\nUnknown user, try again");</span>
+<span class="cstat-no" title="statement not covered" >        recipent = (0, main_prompt_1.check_prompt)("Recipent: ", false);</span>
+    }
+    var body = <span class="cstat-no" title="statement not covered" >(0, main_prompt_1.check_prompt)("Message: ", true);</span>
+    var message = <span class="cstat-no" title="statement not covered" >(0, messages_functions_1.message_create)(currentUser[0], body);</span>
+<span class="cstat-no" title="statement not covered" >    (0, messages_functions_1.message_send)((0, userfunctions_1.find_user)(recipent, userbase), currentUser[0], message);</span>
+<span class="cstat-no" title="statement not covered" >    choose_message_action(userbase, currentUser);</span>
+}
+function <span class="fstat-no" title="function not covered" >read_message_prompt(</span>userbase, currentUser) {
+<span class="cstat-no" title="statement not covered" >    (0, messages_functions_1.message_read_and_dequeue)(currentUser[0]);</span>
+<span class="cstat-no" title="statement not covered" >    choose_message_action(userbase, currentUser);</span>
 }
 &nbsp;</pre></td></tr></table></pre>
 
