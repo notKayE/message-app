@@ -49,5 +49,6 @@ function closest_relation(userbase, user1, user2) {
     if (result === "") {
         result = "There is no path from you to ".concat(user2);
     }
+    else { }
     return result;
 }

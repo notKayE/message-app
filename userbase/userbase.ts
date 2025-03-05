@@ -7,23 +7,23 @@ import { add_to_userbase, create_user, create_userbase } from "../userfunctions"
 // Not in use in the code.
 
 // Users and their names
-export const names = ['joakim', 'ivan', 'elis', 'kalle', 'eva', 'nisse', 'pelle', 'niklas', 'johanna', 'stina',
+export const names: Array<string> = ['joakim', 'ivan', 'elis', 'kalle', 'eva', 'nisse', 'pelle', 'niklas', 'johanna', 'stina',
   'jan', 'andreas', 'lina', 'amanda', 'per', 'tristan', 'froppe', 'nina', 'hanna'];
 
-const password = '123';
-const ub = create_userbase()
+const password: string = '123';
+const ub: UserBase = create_userbase()
 
 // Adds users to the DB.
 for (let i = 0; i < names.length; i++) {
-  const new_user = create_user(names[i], password);
+  const new_user: User = create_user(names[i], password);
   add_to_userbase(new_user, ub);
 }
 
 // Adds friends to users in DB
 for (let i = 0; i < ub.length; i++) {
   // Random amount of friends and array created with said random amount of friends.
-  const random_amount_of_friends = Math.floor(Math.random() * 2 + 2); // 2 - 6 friends
-  const friends_to_add = Array.from({length: random_amount_of_friends}, () => ub[Math.floor(Math.random() * ub.length)]); // Random friends in array
+  const random_amount_of_friends: number = Math.floor(Math.random() * 2 + 2); // 2 - 6 friends
+  const friends_to_add: Array<User> = Array.from({length: random_amount_of_friends}, () => ub[Math.floor(Math.random() * ub.length)]); // Random friends in array
 
   // Add the friends to the users friends list.
   friends_to_add.forEach(friend => {

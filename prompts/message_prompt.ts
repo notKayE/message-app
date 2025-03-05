@@ -1,16 +1,16 @@
 import { message_create, message_read_and_dequeue, message_send } from "../messages/messages_functions";
-import { currentUser, User, UserBase } from "../types";
-import { add_to_userbase, create_user, create_userbase, find_user, is_in_userbase } from "../userfunctions";
+import { CurrentUser, Message, User, UserBase } from "../types";
+import { find_user, is_in_userbase } from "../userfunctions";
 import { logged_in_prompt } from "./logged_in_prompt";
 import { check_prompt } from "./main_prompt";
 
 // Prompt menu for messages.
-export function choose_message_action(userbase: UserBase, currentUser: currentUser): void {
+export function choose_message_action(userbase: UserBase, currentUser: CurrentUser): void {
     console.log("Choose action")
     console.log("[S] - Send message")
     console.log("[R] - Read message")
     console.log("[B] - Go back")
-    const action = check_prompt("", true)
+    const action: string = check_prompt("", true)
 
     if (action === "S") {
         send_message_prompt(userbase, currentUser)
@@ -25,7 +25,7 @@ export function choose_message_action(userbase: UserBase, currentUser: currentUs
 }
 
 // Prompt menu to send messages.
-function send_message_prompt(userbase: UserBase, currentUser: currentUser): void {
+function send_message_prompt(userbase: UserBase, currentUser: CurrentUser): void {
     let recipent = check_prompt("Recipent: ", false)
 
     while(!is_in_userbase(recipent, userbase)) {
@@ -33,15 +33,15 @@ function send_message_prompt(userbase: UserBase, currentUser: currentUser): void
         recipent = check_prompt("Recipent: ", false)
     }
 
-    const body = check_prompt("Message: ", true)
-    const message = message_create(currentUser[0], body)
+    const body: string = check_prompt("Message: ", true)
+    const message: Message = message_create(currentUser[0], body)
     
     message_send(find_user(recipent, userbase)!, currentUser[0], message)
     choose_message_action(userbase, currentUser)
 }
 
 // Prompt menu to read messages.
-function read_message_prompt(userbase: UserBase, currentUser: currentUser): void {
+function read_message_prompt(userbase: UserBase, currentUser: CurrentUser): void {
     message_read_and_dequeue(currentUser[0])
     choose_message_action(userbase, currentUser)
 }

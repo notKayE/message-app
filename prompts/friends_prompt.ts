@@ -1,15 +1,14 @@
 import { closest_relation } from "../friends/closest_relation";
 import { add_friend, friend_request_recieved, remove_friend } from "../friends/friends_functions";
 import { suggested_friends } from "../friends/suggested_friends";
-import { flatten } from "../lib/list";
-import { currentUser, UserBase } from "../types";
+import { CurrentUser, UserBase } from "../types";
 import { logged_in_prompt } from "./logged_in_prompt";
 import { check_prompt } from "./main_prompt";
 
 // Friends-menu, accessible through the first menu
 
-export function friends_prompts(userbase: UserBase, currentuser: currentUser): void {
-    const username = currentuser[0].name
+export function friends_prompts(userbase: UserBase, currentuser: CurrentUser): void {
+    const username: string = currentuser[0].name
     console.log("Choose action:")
     console.log("[A] - Add Friend")
     console.log("[R] - Remove Friend")
@@ -17,7 +16,7 @@ export function friends_prompts(userbase: UserBase, currentuser: currentUser): v
     console.log("[F] - View Friend-requests")
     console.log("[C] - Lookup closest relation")
     console.log("[B] - Back")
-    const action = check_prompt("", true)
+    const action: string = check_prompt("", true)
 
     // Add friend - action
     // A name is written down - calls the add_friend function
@@ -26,7 +25,7 @@ export function friends_prompts(userbase: UserBase, currentuser: currentUser): v
         if (currentuser[0].friends.length !== 0) {
             console.log("Suggested friends:" + suggested_friends(currentuser[0], userbase))
         } else {}
-        const friend_to_add = check_prompt("Friend to add: ", true)
+        const friend_to_add: string = check_prompt("Friend to add: ", true)
         add_friend(username, friend_to_add, userbase)
         friends_prompts(userbase, currentuser)  
         
@@ -36,7 +35,7 @@ export function friends_prompts(userbase: UserBase, currentuser: currentUser): v
     } else if (action === "R" || action === "r") {
         if (currentuser[0].friends.length !== 0) {
             console.log("Current friends: " + array_to_string(currentuser[0].friends))
-            const friend_to_remove = check_prompt("Friend to remove: ", true)
+            const friend_to_remove: string = check_prompt("Friend to remove: ", true)
             remove_friend(username, friend_to_remove, userbase)
         } else {
             console.log("You do not have any friends to remove\n")

@@ -2,7 +2,7 @@ import { dequeue, empty, enqueue, head, Queue } from '../lib/queue_array';
 import { Message, User } from '../types';
 
 // Three renamed queue functions.
-export const message_create_queue = () => empty();
+export const message_create_queue: () => Queue<Message> = () => empty();
 const message_enqueue = (message: Message, queue: Queue<Message | unknown>): void => enqueue(message, queue);
 const message_dequeue = (queue: Queue<Message | unknown>): void => dequeue(queue);
 

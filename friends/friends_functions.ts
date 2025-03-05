@@ -21,13 +21,13 @@ export function friend_request_recieved(recipient:User): void {
     if (!head(recipient.friend_request)) {
         console.log("You have no new friend requests")
     } else {
-        const name_of_sender = head(recipient.friend_request).name
-        const name_of_recipient = recipient.name
+        const name_of_sender: string = head(recipient.friend_request).name
+        const name_of_recipient: string = recipient.name
         console.log(`${name_of_sender} has sent you a friend request!\n`)
         console.log("Do you accept?")
         console.log("[Y] - Yes")
         console.log("[N] - No")
-        const answer = check_prompt("", false)
+        const answer: string = check_prompt("", false)
         if (answer === "Y" ||answer === "y") {
             recipient.friends.push(name_of_sender)
             head(recipient.friend_request).friends.push(name_of_recipient)
@@ -64,9 +64,9 @@ export function remove_friend(username:string, friendname: string, userbase: Use
                 for (let n = 0; n < userbase.length; n++) {
                     if (friendname === userbase[n].name) {
                         if (userbase[i].friends.indexOf(friendname) !== -1){
-                            const remove = userbase[i].friends.indexOf(friendname);
+                            const remove: number = userbase[i].friends.indexOf(friendname);
                             userbase[i].friends.splice(remove, 1);
-                            const remove2 = userbase[n].friends.indexOf(username);
+                            const remove2: number = userbase[n].friends.indexOf(username);
                             userbase[n].friends.splice(remove2, 1);
                         }
                     } else {}

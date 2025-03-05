@@ -23,7 +23,7 @@ export function suggested_friends(user: User, userbase: UserBase): Array<string>
                 suggested_friends_array.push(suggested_friend)
                 frequency.push(pair(suggested_friend, 1))
             } else {
-                const idx = suggested_friends_array.indexOf(suggested_friend)
+                const idx: number = suggested_friends_array.indexOf(suggested_friend)
                 frequency[idx] = pair(suggested_friend, tail(frequency[idx]) + 1)
             }   
         }

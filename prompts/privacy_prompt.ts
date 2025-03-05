@@ -1,9 +1,9 @@
-import { User, UserBase, currentUser } from "../types";
+import { User, UserBase, CurrentUser } from "../types";
 import { logged_in_prompt } from "./logged_in_prompt";
 import { check_prompt } from "./main_prompt";
 
 // Prompt menu for privacy settings.
-export function privacy_settings_prompt(userbase: UserBase, currentUser: currentUser): void {
+export function privacy_settings_prompt(userbase: UserBase, currentUser: CurrentUser): void {
   console.log('Choose action')
     console.log('[C] - Change password')
     console.log('[P] - Privacy')
@@ -24,7 +24,7 @@ export function privacy_settings_prompt(userbase: UserBase, currentUser: current
 }
 
 // Prompt menu for changing privacy settings.
-function privacy_prompt(userbase: UserBase, currentUser: currentUser): void {
+function privacy_prompt(userbase: UserBase, currentUser: CurrentUser): void {
   const user = currentUser[0]
   const privacy_current_setting = user.message_privacy ? 'ENABLED' : 'DISABLED';
   const privacy_choice = user.message_privacy ? 'Disable' : 'Enable';
@@ -34,7 +34,7 @@ function privacy_prompt(userbase: UserBase, currentUser: currentUser): void {
   console.log(`[C] - ${privacy_choice}`)
   console.log('[B] - Back')
 
-  const user_choice = check_prompt('', true);
+  const user_choice: string = check_prompt('', true);
 
   if (user_choice.toLowerCase() === 'b') {
     privacy_settings_prompt(userbase, currentUser);
@@ -48,7 +48,7 @@ function privacy_prompt(userbase: UserBase, currentUser: currentUser): void {
 }
 
 // Prompt menu for changing password.
-function change_password_prompt(userbase: UserBase, currentUser: currentUser): void {
+function change_password_prompt(userbase: UserBase, currentUser: CurrentUser): void {
   const old_password: string = check_prompt("Enter current password: ", false)
 
   if (old_password === currentUser[0].password) {
