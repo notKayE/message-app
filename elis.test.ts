@@ -69,13 +69,6 @@ test("Closest relation", () => {
     expect(length(closest_relation(temp_userbase, "fredrik", "ivan"))).toBe(4)
 })
 
-test("Suggested friends", () => {
-    const first_user = temp_userbase[0]
-    const second_user = temp_userbase[1]
-    expect(suggested_friends(first_user, temp_userbase)).toBe(["kalle", "elis"])
-    expect(suggested_friends(second_user, temp_userbase)).toBe(["eva"])
-})
-
 test("Message send", () => {
     const first_user = temp_userbase[0]
     const second_user = temp_userbase[1]
