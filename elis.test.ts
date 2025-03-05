@@ -1,11 +1,7 @@
-import { suggested_friends } from "./friends/suggested_friends";
 import { closest_relation } from "./friends/closest_relation";
 import { message_create, message_create_queue, message_read_and_dequeue, message_send } from "./messages/messages_functions";
-import { User, UserBase, Message, currentUser } from "./types";
-import { length, head } from "./lib/list";
-import { dequeue, empty, enqueue, is_empty, Queue } from "./lib/queue_array";
-import { add_to_userbase, create_user, create_userbase, find_user, is_in_userbase } from "./userfunctions";
-
+import { UserBase, Message, } from "./types";
+import { dequeue, empty, enqueue, Queue } from "./lib/queue_array";
 
 const temp_userbase: UserBase = [
     {

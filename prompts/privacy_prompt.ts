@@ -1,4 +1,4 @@
-import { User, UserBase, CurrentUser } from "../types";
+import { UserBase, CurrentUser } from "../types";
 import { logged_in_prompt } from "./logged_in_prompt";
 import { check_prompt } from "./main_prompt";
 
