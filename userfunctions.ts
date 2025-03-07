@@ -22,7 +22,7 @@ export function create_user(name: string, password: string): User {
 // Creates an empty userbase.
 export function create_userbase(): UserBase {
     return []
-}
+}   
 
 /**
  * Finds if a user is in a userbase.

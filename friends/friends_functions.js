@@ -46,16 +46,9 @@ function friend_request_recieved(recipient) {
 // Function to add friend.
 function add_friend(username, friendname, userbase) {
     if ((0, userfunctions_1.is_in_userbase)(friendname, userbase)) {
-        for (var i = 0; i < userbase.length; i++) {
-            if (username === userbase[i].name) {
-                for (var n = 0; n < userbase.length; n++) {
-                    if (friendname === userbase[n].name) {
-                        friend_request_send(userbase[n], userbase[i]);
-                    }
-                    else { }
-                }
-            }
-        }
+        var recipient = (0, userfunctions_1.find_user)(friendname, userbase);
+        var sender = (0, userfunctions_1.find_user)(username, userbase);
+        friend_request_send(recipient, sender);
     }
     else {
         console.log("User does not exist\n");
@@ -65,21 +58,12 @@ function add_friend(username, friendname, userbase) {
 // If friend is removed, the person who is removed has the remover removed as friend as well
 function remove_friend(username, friendname, userbase) {
     if ((0, userfunctions_1.is_in_userbase)(friendname, userbase)) {
-        for (var i = 0; i < userbase.length; i++) {
-            if (username === userbase[i].name) {
-                for (var n = 0; n < userbase.length; n++) {
-                    if (friendname === userbase[n].name) {
-                        if (userbase[i].friends.indexOf(friendname) !== -1) {
-                            var remove = userbase[i].friends.indexOf(friendname);
-                            userbase[i].friends.splice(remove, 1);
-                            var remove2 = userbase[n].friends.indexOf(username);
-                            userbase[n].friends.splice(remove2, 1);
-                        }
-                    }
-                    else { }
-                }
-            }
-        }
+        var user = (0, userfunctions_1.find_user)(username, userbase);
+        var friend = (0, userfunctions_1.find_user)(friendname, userbase);
+        var remove = user.friends.indexOf(friendname);
+        user.friends.splice(remove, 1);
+        var remove2 = friend.friends.indexOf(username);
+        friend.friends.splice(remove2, 1);
     }
     else {
         console.log("User does not exist\n");

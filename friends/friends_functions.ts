@@ -1,5 +1,5 @@
 import { User, UserBase } from "../types";
-import { is_in_userbase } from "../userfunctions";
+import { find_user, is_in_userbase } from "../userfunctions";
 import { dequeue, enqueue, head, Queue } from '../lib/queue_array';
 import { check_prompt } from '../prompts/main_prompt';
 import { friends_prompts } from '../prompts/friends_prompt';
@@ -31,10 +31,13 @@ export function friend_request_recieved(recipient:User): void {
         if (answer === "Y" ||answer === "y") {
             recipient.friends.push(name_of_sender)
             head(recipient.friend_request).friends.push(name_of_recipient)
+            request_dequeue(recipient.friend_request)
         } else if (answer === "N" || answer === "n"){
-            friends_prompts
-        } else {console.log("Unknown command")}
-        request_dequeue(recipient.friend_request)
+            request_dequeue(recipient.friend_request)
+        } else {
+            console.log("Unknown command")
+            friend_request_recieved(recipient)
+        }
     }
 }
 
@@ -42,36 +45,23 @@ export function friend_request_recieved(recipient:User): void {
 
 export function add_friend(username: string, friendname: string, userbase: UserBase): void {
     if (is_in_userbase(friendname, userbase)) {
-        for (let i = 0; i < userbase.length; i++) {
-            if (username === userbase[i].name) {
-                for (let n = 0; n < userbase.length; n++) {
-                    if (friendname === userbase[n].name) {
-                        friend_request_send(userbase[n], userbase[i])
-                    } else {}
-                } 
-            }
-        }
+        const recipient: User = find_user(friendname, userbase)!
+        const sender: User = find_user(username, userbase)!
+        friend_request_send(recipient, sender)
     } else { console.log("User does not exist\n") }
 }
 
 // Function to remove friend. 
 // If friend is removed, the person who is removed has the remover removed as friend as well
 
-export function remove_friend(username:string, friendname: string, userbase: UserBase):void {
+export function remove_friend(username: string, friendname: string, userbase: UserBase):void {
     if (is_in_userbase(friendname, userbase)) {
-        for (let i = 0; i < userbase.length; i++) {
-            if (username === userbase[i].name) {
-                for (let n = 0; n < userbase.length; n++) {
-                    if (friendname === userbase[n].name) {
-                        if (userbase[i].friends.indexOf(friendname) !== -1){
-                            const remove: number = userbase[i].friends.indexOf(friendname);
-                            userbase[i].friends.splice(remove, 1);
-                            const remove2: number = userbase[n].friends.indexOf(username);
-                            userbase[n].friends.splice(remove2, 1);
-                        }
-                    } else {}
-                } 
-            }
-        }
+        const user: User = find_user(username, userbase)!
+        const friend: User = find_user(friendname, userbase)!
+
+        const remove: number = user.friends.indexOf(friendname);
+        user.friends.splice(remove, 1);
+        const remove2: number = friend.friends.indexOf(username);
+        friend.friends.splice(remove2, 1); 
     } else { console.log("User does not exist\n") }
 }
